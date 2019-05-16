@@ -6,11 +6,7 @@ const mongoose = require('mongoose');
 // middlewear
 app.use(express.json());
 app.use(express.static('public'));
-app.use(express.urlencoded({ extended: false }))
-
-// connect controller
-const userController = require('./controllers/user.js');
-app.use('/users', userController);
+app.use(express.urlencoded({ extended: false }));
 
 // connect to mongoose
 mongoose.connect('mongodb://localhost:27017/project_three', { useNewUrlParser: true });
@@ -27,5 +23,4 @@ app.listen(3000, () => {
 const itemController = require(`./controllers/item_controller.js`);
 
 //Routes
-
 app.use(`/items`, itemController);
