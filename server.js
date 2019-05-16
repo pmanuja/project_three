@@ -8,6 +8,10 @@ app.use(express.json());
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }))
 
+// connect controller
+const userController = require('./controllers/user.js');
+app.use('/users', userController);
+
 // connect to mongoose
 mongoose.connect('mongodb://localhost:27017/project_three', { useNewUrlParser: true });
 mongoose.connection.once('open', () => {
