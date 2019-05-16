@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 // middlewear
 app.use(express.json());
 app.use(express.static('public'));
+app.use(express.urlencoded({ extended: false }));
 
 // connect controller
 const userController = require('./controllers/user.js');
@@ -21,3 +22,9 @@ mongoose.connection.once('open', () => {
 app.listen(3000, () => {
   console.log('listening...');
 });
+
+//Routers
+const itemController = require(`./controllers/item_controller.js`);
+
+//Routes
+app.use(`/items`, itemController);
