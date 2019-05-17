@@ -1,0 +1,49 @@
+<div  class="items-list">
+
+  <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
+  <div class="adminOnly">
+    <div class="new-item">
+      <form ng-submit="sctrl.createItem()">
+        <input class="" type="text" ng-model="sctrl.createNewItem.name" placeholder="name" /><br>
+        <input class="" type="text" ng-model="sctrl.createNewItem.price" placeholder="price" /><br>
+        <input class="" type="text" ng-model="sctrl.createNewItem.category" placeholder="category" /><br>
+        <input class="" type="text" ng-model="sctrl.createNewItem.description" placeholder="description" /><br>
+        <input class="" type="text" ng-model="sctrl.createNewItem.image" placeholder="image url" /><br>
+        <input type="submit" value="Add Item">
+      </form>
+    </div>
+  </div>
+
+  <ul>
+    <li ng-repeat="item in sctrl.items"> {{item.name}}
+      <!-- edit item link for each item -->
+      <a
+      ng-if="$index !== sctrl.indexOfEditFormToShow"
+      href="#"
+      ng-click="sctrl.indexOfEditFormToShow = $index">
+      Edit
+      </a>
+
+
+      <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
+      <div class="adminOnly">
+
+      <!-- delete button for each item -->
+        <button ng-click="sctrl.deleteItem(item._id)">Delete</button>
+
+      <!-- edit item form -->
+        <form ng-if="$index === sctrl.indexOfEditFormToShow" ng-submit="sctrl.updateItem(item._id)">
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.name" value="item.name"/><br>
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.price"  value="item.price"/><br>
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.category" value="item.category"/><br>
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.description" value="item.description"/><br>
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.image" value="item.image"/><br>
+
+          <input type="submit" value="Update Item">
+          <a href="/" ng-if="$index === sctrl.indexOfEditFormToShow" ng-click="sctrl.indexOfEditFormToShow = $index" >Cancel</a>
+
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>
