@@ -1,12 +1,74 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="ShopApp">
   <head>
     <meta charset="utf-8">
     <title></title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
     <script src="/js/app.js"></script>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="/css/app.css">
   </head>
-  <body>
-    {{2+2}}
+  <body >
+    <div ng-controller="ShopController as sctrl">
+      <!-- diaplay list of items -->
+      <div  class="items-list">
+        <ul>
+          <li ng-repeat="item in sctrl.items"> {{item.name}}
+            <!-- edit item link for each item -->
+          <a
+            ng-if="$index !== sctrl.indexOfEditFormToShow"
+            href="#"
+            ng-click="sctrl.indexOfEditFormToShow = $index">
+                Edit
+          </a>
+
+          <!-- delete button for each item -->
+          <button ng-click="sctrl.deleteItem(item._id)">Delete</button>
+
+          <!-- edit item form -->
+          <div class="">
+            <form ng-if="$index === sctrl.indexOfEditFormToShow" ng-submit="sctrl.updateItem(item._id)">
+              <input class="" type="text" ng-model="sctrl.updateItemAttrs.name" value="item.name"/></br>
+              <input class="" type="text" ng-model="sctrl.updateItemAttrs.price"  value="item.price"/></br>
+              <input class="" type="text" ng-model="sctrl.updateItemAttrs.category" value="item.category"/></br>
+              <input class="" type="text" ng-model="sctrl.updateItemAttrs.description" value="item.description"/></br>
+              <input class="" type="text" ng-model="sctrl.updateItemAttrs.image" value="item.image"/></br>
+
+              <input type="submit" value="Update Item">
+              <a href="/" ng-if="$index === sctrl.indexOfEditFormToShow" ng-click="sctrl.indexOfEditFormToShow = $index" >Cancel</a>
+
+            </form>
+          </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- create new item form -->
+      <div class="new-item">
+        <form ng-submit="sctrl.createItem()">
+          <input class="" type="text" ng-model="sctrl.createNewItem.name" placeholder="name" /></br>
+          <input class="" type="text" ng-model="sctrl.createNewItem.price" placeholder="price" /></br>
+          <input class="" type="text" ng-model="sctrl.createNewItem.category" placeholder="category" /></br>
+          <input class="" type="text" ng-model="sctrl.createNewItem.description" placeholder="description" /></br>
+          <input class="" type="text" ng-model="sctrl.createNewItem.image" placeholder="image url" /></br>
+
+          <input type="submit" value="Add Item">
+
+        </form>
+      </div>
+
+    </div>
+
+    <div ng-controller="UserController as ctrl">
+      <!--  create new user-->
+        <form ng-submit="ctrl.createUser()">
+          <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /></br>
+          <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /></br>
+          <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /></br>
+
+          <input type="submit" value="Add User">
+        </form>
+    </div>
   </body>
 </html>
