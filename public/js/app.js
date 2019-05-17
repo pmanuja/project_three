@@ -78,7 +78,7 @@ app.controller('UserController', ['$http', function($http){
   this.createUser = function(){
     $http({
       method:'POST',
-      url: 'users',
+      url: '/users',
       data: {
         username: this.createUsername,
         password: this.createPassword,
@@ -92,7 +92,7 @@ app.controller('UserController', ['$http', function($http){
   };
 
   this.logIn = function(){
-    $http:({
+    $http({
       method:'POST',
       url: '/sessions',
       data: {
