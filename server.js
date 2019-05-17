@@ -10,9 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // connect controllers
 const userController = require('./controllers/user.js');
-app.use('/users', userController);
 const itemController = require(`./controllers/item_controller.js`);
-app.use(`/items`, itemController);
 
 // connect to mongoose
 mongoose.connect('mongodb://localhost:27017/project_three', { useNewUrlParser: true });
@@ -26,4 +24,8 @@ app.listen(3000, () => {
 });
 
 
-//Routes
+//Controller routes
+app.use('/users', userController);
+app.use(`/items`, itemController);
+
+//All other routes
