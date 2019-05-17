@@ -91,4 +91,31 @@ app.controller('UserController', ['$http', function($http){
     });
   };
 
-}])
+  this.logIn = function(){
+    $http:({
+      method:'POST',
+      url: '/sessions',
+      data: {
+        username: this.username,
+        password: this.password
+      }
+    }).then(function(response){
+      console.log(response);
+      controller.username = null;
+      controller.password = null;
+    }, function(){
+      console.log('error');
+    });
+  };
+
+  this.logOut = function(){
+    $http({
+      method:'DELETE',
+      url:'/sessions'
+    }).then(function(response){
+      console.log(response);
+    }, function(){
+      console.log('error');
+    });
+  };
+}]);
