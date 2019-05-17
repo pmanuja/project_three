@@ -2,7 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
-const Users = require('../models/users.js');
+const Users = require('../models/user.js');
 
 //All routes: /sessions/...
 
