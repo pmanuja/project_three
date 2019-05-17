@@ -1,0 +1,21 @@
+<div ng-controller="UserController as ctrl">
+
+   Create New User
+    <form ng-submit="ctrl.createUser()">
+      <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /><br>
+      <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /><br>
+      <input type="submit" value="Add User">
+    </form>
+
+    Sign In
+    <form ng-submit="ctrl.logIn()">
+      <input class="" type="text" ng-model="ctrl.username" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.password" placeholder="Password" /><br>
+      <input type="submit" value="Add User">
+    </form>
+
+    Log Out
+    <button ng-click="ctrl.logOut()"> Sign Out </button>
+
+</div>

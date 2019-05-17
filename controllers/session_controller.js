@@ -8,20 +8,29 @@ const Users = require('../models/user.js');
 
 //POST - a new session. Takes a username and password, then compares them to the list of registered Users. If a match is found, a session is created, and the session.currentUser is set to the matched user.
 router.post(`/`, function(req,res){
+  console.log(req.body);
   if(req.body.username && req.body.password){
     Users.findOne({username:req.body.username}, function(error, foundUser){
-      if(bcrypt.compareSync(req.body.password, foundUser.password)){
-        req.session.currentUser = foundUser;
-        res.status(201).json({
-          status:201,
-          message:'session created'
-        });
+      console.log(foundUser);
+      if(foundUser){
+        if(bcrypt.compareSync(req.body.password, foundUser.password)){
+          req.session.currentUser = foundUser;
+          res.status(201).json({
+            status:201,
+            message:'session created'
+          });
+        } else {
+          res.status(401).json({
+            status:401,
+            message:'login failed'
+          });
+        }
       } else {
         res.status(401).json({
           status:401,
           message:'login failed'
-        });
-      }
+      });
+    }
     });
   }
 });
