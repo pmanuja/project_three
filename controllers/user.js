@@ -1,7 +1,7 @@
 const express = require('express');
 const users = express.Router();
 const Users = require('../models/user.js');
-const bcrpyt = require('brypt');
+const bcrypt = require('bcrypt');
 
 users.get('/', (req, res) => {
   Users.find({}, (err, foundUsers) => {
@@ -10,7 +10,7 @@ users.get('/', (req, res) => {
 });
 
 users.post('/', (req, res) => {
-  req.body.password = bcrypt.hashSync(req.body.password, bcrpyt.genSaltSync(10));
+  req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
   Users.create(req.body, (req, createdUser) => {
     res.status(201).json({
       status:201,
