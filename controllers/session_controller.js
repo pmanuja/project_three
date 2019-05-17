@@ -20,13 +20,13 @@ router.post(`/`, function(req,res){
         } else {
           res.status(401).json({
             status:401,
-            message:'login failed'
+            message:'password incorrect'
           });
         }
       } else {
         res.status(401).json({
           status:401,
-          message:'login failed'
+          message:'user not found'
       });
     }
     });
