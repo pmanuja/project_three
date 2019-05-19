@@ -139,6 +139,7 @@ app.controller('UserController', ['$http', function($http){
       url:'/sessions'
     }).then(function(response){
       console.log(response);
+      controller.loggedInUsername = null;
     }, function(){
       console.log('error');
     });
