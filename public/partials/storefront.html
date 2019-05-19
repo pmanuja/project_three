@@ -15,8 +15,8 @@
   </div>
 
   <ul>
-    <li ng-repeat="item in sctrl.items"> {{item.name}}
-      <img ng-src= {{item.image}} alt="{{item.name}} image" />
+    <li ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
+      <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 500px; "/>
       <p>{{item.description}}</p>
       <!-- edit item link for each item -->
       <a
@@ -39,7 +39,7 @@
           <input class="" type="text" ng-model="sctrl.updateItemAttrs.price"  value="item.price"/><br>
           <input class="" type="text" ng-model="sctrl.updateItemAttrs.category" value="item.category"/><br>
           <input class="" type="text" ng-model="sctrl.updateItemAttrs.description" value="item.description"/><br>
-          <input class="" type="text" ng-model="sctrl.updateItemAttrs.image" value="item.image"/><br>
+          <input class="" type="text" ng-model="sctrl.updateItemAttrs.image" value="item.image" /><br>
 
           <input type="submit" value="Update Item">
           <a href="/" ng-if="$index === sctrl.indexOfEditFormToShow" ng-click="sctrl.indexOfEditFormToShow = $index" >Cancel</a>

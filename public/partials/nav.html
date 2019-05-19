@@ -19,7 +19,7 @@
     <li><a href="#" target="_blank">my shopping cart</a></li>
     <li><a href="#" target="_blank" ng-if="(!ctrl.loggedInUsername)">log in</a></li>
   </ul>
-  <ul ng-if="ctrl.loggedInUsername" style="list-style-type: none;">
+  <ul ng-if="ctrl.loggedInUsername">
     <li>welcome, {{ctrl.loggedInUsername}}</li>
   </ul>
     <form ng-submit="ctrl.createUser()" ng-if="(!ctrl.loggedInUsername)">
