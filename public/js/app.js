@@ -75,6 +75,18 @@ app.controller('ShopController', ['$http', function($http){
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
+  this.openShop = function(){
+    $http({
+      method:'GET',
+      url: '/app'
+    }).then(function(response){
+      console.log(response);
+      controller.loggedInUsername = response.data.username;
+    }, function(){
+      console.log('error');
+    })
+  }
+
   this.createUser = function(){
     $http({
       method:'POST',
@@ -103,6 +115,7 @@ app.controller('UserController', ['$http', function($http){
       console.log(response);
       controller.username = null;
       controller.password = null;
+      controller.openShop();
     }, function(){
       console.log('error');
     });

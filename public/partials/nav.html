@@ -4,10 +4,36 @@
 <h5><a href="#" target="_blank">log-in</a></h5>
 <h5><a href="#" target="_blank">log-out</a></h5> -->
 
-<ul class="nav" style="list-style-type: none;">
+<!-- <ul class="nav" style="list-style-type: none;">
   <li><a href="#" target="_blank">home</a></li>
   <li><a href="#" target="_blank">shop</a></li>
   <li><a href="#" target="_blank">my shopping cart</a></li>
   <li><a href="#" target="_blank">log-in</a></li>
   <li><a href="#" target="_blank">log-out</a></li>
-</ul>
+</ul> -->
+
+<div class="login" ng-controller="UserController as ctrl">
+  <ul style="list-style-type: none;">
+    <li><a href="#" target="_blank">home</a></li>
+    <li><a href="#" target="_blank">shop</a></li>
+    <li><a href="#" target="_blank">my shopping cart</a></li>
+    <li><a href="#" target="_blank" ng-if="(!ctrl.loggedInUsername)">log in</a></li>
+  </ul>
+  <ul ng-if="ctrl.loggedInUsername" style="list-style-type: none;">
+    <li>welcome, {{ctrl.loggedInUsername}}</li>
+    <li><a href="#" target="_blank">log-out</a></li>
+  </ul>
+    <form ng-submit="ctrl.createUser()">
+      <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /><br>
+      <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /><br>
+      <input type="submit" value="create new user">
+    </form>
+    <form ng-submit="ctrl.logIn()">
+      <input class="" type="text" ng-model="ctrl.username" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.password" placeholder="Password" /><br>
+      <input type="submit" value="log in">
+    </form>
+    <button ng-click="ctrl.logOut()"> Sign Out </button>
+
+</div>
