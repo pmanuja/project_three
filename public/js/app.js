@@ -143,4 +143,5 @@ app.controller('UserController', ['$http', function($http){
       console.log('error');
     });
   };
+  controller.openShop();
 }]);
