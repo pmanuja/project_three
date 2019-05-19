@@ -1,5 +1,38 @@
-<h5><a href="#" target="_blank">home</a></h5>
+<!-- <h5><a href="#" target="_blank">home</a></h5>
 <h5><a href="#" target="_blank">shop</a></h5>
-<h5><a href="#" target="_blank">my cart</a></h5>
+<h5><a href="#" target="_blank">my shopping cart</a></h5>
 <h5><a href="#" target="_blank">log-in</a></h5>
-<h5><a href="#" target="_blank">log-out</a></h5>
+<h5><a href="#" target="_blank">log-out</a></h5> -->
+
+<!-- <ul class="nav" style="list-style-type: none;">
+  <li><a href="#" target="_blank">home</a></li>
+  <li><a href="#" target="_blank">shop</a></li>
+  <li><a href="#" target="_blank">my shopping cart</a></li>
+  <li><a href="#" target="_blank">log-in</a></li>
+  <li><a href="#" target="_blank">log-out</a></li>
+</ul> -->
+
+<div class="login" ng-controller="UserController as ctrl">
+  <ul style="list-style-type: none;">
+    <li><a href="#" target="_blank">home</a></li>
+    <li><a href="#" target="_blank">shop</a></li>
+    <li><a href="#" target="_blank">my shopping cart</a></li>
+    <li><a href="#" target="_blank" ng-if="(!ctrl.loggedInUsername)">log in</a></li>
+  </ul>
+  <ul ng-if="ctrl.loggedInUsername">
+    <li>welcome, {{ctrl.loggedInUsername}}</li>
+  </ul>
+    <form ng-submit="ctrl.createUser()" ng-if="(!ctrl.loggedInUsername)">
+      <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /><br>
+      <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /><br>
+      <input type="submit" value="create new user">
+    </form>
+    <form ng-submit="ctrl.logIn()" ng-if="(!ctrl.loggedInUsername)">
+      <input class="" type="text" ng-model="ctrl.username" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="ctrl.password" placeholder="Password" /><br>
+      <input type="submit" value="log in">
+    </form>
+    <button ng-click="ctrl.logOut()" ng-if="ctrl.loggedInUsername"> log out </button>
+
+</div>
