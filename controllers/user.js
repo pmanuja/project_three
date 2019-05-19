@@ -32,13 +32,14 @@ users.put(`/addToCart/:id`, function(req,res) {
   Users.findById(req.params.id, function(error, foundUser){
     //Checks if the item reference is already in the cart. Gives the index if so, otherwise itemIndex = -1.
     let itemIndex = foundUser.shoppingCart.findIndex(function(element){
-      if(element.itemID = req.body.itemID) {
+      if(element.itemID === req.body.itemID) {
+        console.log("found!");
         return true;
       } else {
         return false;
       }
     });
-
+    console.log(itemIndex);
     let shoppingCartItem = {
       itemID: req.body.itemID,
       quantity: parseInt(req.body.quantity),
@@ -60,6 +61,33 @@ users.put(`/addToCart/:id`, function(req,res) {
 
   });
 });
+
+//GET - the full list of items from the user's cart.
+users.get(`/getCartContents/:id`, function(req,res){
+  Users.findById(req.params.id, function(error, foundUser){
+    let userCart = foundUser.shoppingCart;
+    let outputCart = [];
+    for(let i = 0; i < userCart.length; i++) {
+      console.log(`Item ${i}`);
+      Items.findById(userCart[i].itemID, function(error, foundItem){
+        console.log(foundItem);
+        let outputItem = {
+          item: foundItem,
+          quantity: userCart[i].quantity,
+        };
+        console.log(outputItem);
+        outputCart.push(outputItem);
+        if(i === userCart.length-1) {
+          console.log(outputCart);
+          res.json(outputCart);
+        }
+      });
+    }; //End loop
+
+  });
+});
+
+
 
 //DELETE - a single user
 users.delete('/:id', (req, res) => {
