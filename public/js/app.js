@@ -18,6 +18,18 @@ app.controller('ShopController', ['$http', function($http){
       }, function(error) {
         console.log(error);
       });
+  };
+
+  this.getUsername = function(){
+    $http({
+      method:'GET',
+      url: '/app'
+    }).then(function(response){
+      console.log(response);
+      controller.loggedInUsername = response.data.username;
+    }, function(){
+      console.log('error');
+    })
   }
 
 

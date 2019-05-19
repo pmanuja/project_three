@@ -21,19 +21,18 @@
   </ul>
   <ul ng-if="ctrl.loggedInUsername" style="list-style-type: none;">
     <li>welcome, {{ctrl.loggedInUsername}}</li>
-    <li><a href="#" target="_blank">log-out</a></li>
   </ul>
-    <form ng-submit="ctrl.createUser()">
+    <form ng-submit="ctrl.createUser()" ng-if="(!ctrl.loggedInUsername)">
       <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /><br>
       <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /><br>
       <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /><br>
       <input type="submit" value="create new user">
     </form>
-    <form ng-submit="ctrl.logIn()">
+    <form ng-submit="ctrl.logIn()" ng-if="(!ctrl.loggedInUsername)">
       <input class="" type="text" ng-model="ctrl.username" placeholder="Username" /><br>
       <input class="" type="password" ng-model="ctrl.password" placeholder="Password" /><br>
       <input type="submit" value="log in">
     </form>
-    <button ng-click="ctrl.logOut()"> Sign Out </button>
+    <button ng-click="ctrl.logOut()" ng-if="ctrl.loggedInUsername"> log out </button>
 
 </div>
