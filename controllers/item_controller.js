@@ -2,6 +2,7 @@ const express = require(`express`);
 const router = express.Router();
 
 const Items = require(`../models/items.js`);
+
 const seedProducts = require(`../models/seedProducts.js`);
 
 //GET - full list of items from database
