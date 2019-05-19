@@ -23,21 +23,41 @@ users.post('/', (req, res) => {
   });
 });
 
-//PUT - add a single existing item from the item database to a user's shoppingCart array.
-//req.params.id should be the user's id
-//req.body needs to contain the items id - make sure this is added to it when going to this route!
-//Extend this method to allow for counting how many the user wants (right now, the item is just pushed onto the array)
+
+//PUT - adds a reference to an existing item to a user's shopping cart array. If the item is there already, it adds to the quantity instead. The reference uses the item's database id.
+//req.params.id should be the user's id!
+//req.body needs to contain 'itemID' and 'quantity' - make sure these are added to req.body when going to this route!
+//Negative quantities reduce the amount in the cart - if brought to 0 (or lower), the item is removed from the cart.
 users.put(`/addToCart/:id`, function(req,res) {
-  Items.find({_id:req.body.itemID}, function(error, foundItem){
-    Users.find({_id:req.params.id}, function(error, foundUser){
-      console.log(foundUser[0]);
-      console.log(foundItem[0]);
-      console.log(foundUser[0].shoppingCart);
-      foundUser[0].shoppingCart.push(foundItem[0]);
-      foundUser[0].save( function(error,data){
-        res.json(foundUser[0]);
-      });
+  Users.findById(req.params.id, function(error, foundUser){
+    //Checks if the item reference is already in the cart. Gives the index if so, otherwise itemIndex = -1.
+    let itemIndex = foundUser.shoppingCart.findIndex(function(element){
+      if(element.itemID = req.body.itemID) {
+        return true;
+      } else {
+        return false;
+      }
     });
+
+    let shoppingCartItem = {
+      itemID: req.body.itemID,
+      quantity: parseInt(req.body.quantity),
+    };
+
+    if(itemIndex === -1) { //Create a new item reference in the cart
+      foundUser.shoppingCart.push(shoppingCartItem);
+    } else { //Add or remove item quantity
+      foundUser.shoppingCart[itemIndex].quantity += shoppingCartItem.quantity;
+
+      if(foundUser.shoppingCart[itemIndex].quantity <= 0) { //Remove the item
+        foundUser.shoppingCart.splice(itemIndex,1);
+      }
+    }
+
+    foundUser.save( function(error,data){ //Saves the changes in the database
+      res.json(foundUser);
+    });
+
   });
 });
 
