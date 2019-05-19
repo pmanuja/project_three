@@ -16,6 +16,8 @@
 
   <ul>
     <li ng-repeat="item in sctrl.items"> {{item.name}}
+      <img ng-src= {{item.image}} alt="{{item.name}} image" />
+      <p>{{item.description}}</p>
       <!-- edit item link for each item -->
       <a
       ng-if="$index !== sctrl.indexOfEditFormToShow"
