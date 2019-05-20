@@ -5,6 +5,7 @@ module.exports = [
     category: "Electronics",
     description: 'Cnacnoo Ultra-Slim Keyboard for PC Computer Laptop, Wired USB Small Keyboards with 78 Keys, Portable Multimedia Mini Keyboards Universal Compatibility for PC, Mac, PS3, Xbox360',
     image: '../images/keyboard.jpg'
+
   },
   {
     name: 'Optical Mouse',
