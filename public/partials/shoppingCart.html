@@ -12,7 +12,7 @@
     </div>
     <div class="qty-price">
       <div class="cart-item-qty">
-        <h4> Qyt: {{cartItem.quantity}}</h4>
+        <h4> Qty: {{cartItem.quantity}}</h4>
       </div>
       <div class="cart-item-total">
       <h4> Price : ${{cartItem.item.price}} ea</h4>
@@ -26,4 +26,4 @@
   </div>
 
 </div>
-<h2> Subtotal: $</h2>
+<h2> Subtotal: ${{userCtrl.getSubTotal(userCtrl.temporaryCartItem)}}</h2>

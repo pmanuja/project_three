@@ -112,6 +112,20 @@ app.controller('UserController', ['$http', function($http){
 
   this.pageToDisplay = 0;
 
+  this.getSubTotal = function(cartItems){
+    if(cartItems != null){
+      console.log("get subtotal");
+      var total = 0;
+      for(let i = 0; i < cartItems.length; i++){
+          let cartItem = cartItems[i];
+          total += (cartItem.item.price * cartItem.quantity);
+      }
+        console.log(" subtotal" + total);
+
+    }
+    return total;
+  }
+
   this.openShop = function(){
     $http({
       method:'GET',
