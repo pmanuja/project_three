@@ -7,7 +7,12 @@ const itemSchema = new mongoose.Schema({
   category: String,
   description: String,
   image: String,
-  //Reviews - Implement when ready
+  reviews: [{
+    username: String,
+    ratings: {type:Number, min:0, max:5},
+    review:String
+  }]
+
 });
 
 const Items = mongoose.model('Item', itemSchema);
