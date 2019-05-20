@@ -7,6 +7,7 @@ app.controller('ShopController', ['$http', function($http){
   this.updateItemAttrs = {};
   this.showModal = false;
   this.itemIndex = null;
+  this.displayReviewForm = 0;
 
   this.showProductDetails = function($index){
     console.log("view product details" + $index);
@@ -41,6 +42,20 @@ app.controller('ShopController', ['$http', function($http){
     })
   }
 
+  this.addReview = function(item_id) {
+    $http({
+      method:'PUT',
+      url: '/items/' + item_id,
+      data: this.reviewInfo
+    }).then(function(response){
+      console.log(response);
+      controller.getItems();
+      controller.displayReviewForm = 0;
+      controller.reviewInfo = {};
+    }, function(error) {
+      console.log(error);
+    });
+  };
 
   this.updateItem = function(item_id) {
     console.log("hello update me" + item_id);
@@ -83,7 +98,6 @@ app.controller('ShopController', ['$http', function($http){
     }).then(function(response){
       //console.log(response.data);
       controller.items = response.data;
-
     }, function(error) {
       console.log(error);
     });
