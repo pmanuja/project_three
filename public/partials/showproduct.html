@@ -13,14 +13,14 @@
   </ul>
   <div class="view_reviews">
     <ul>
-      <li>{{itemCtrl.temporaryItem.reviews.username}} rated this item {{itemCtrl.temporaryItem.reviews.ratings}}</li>
-      <li><p>{{itemCtrl.temporaryItem.reviews.review}}</p></li>
+      <li class="borderThis" ng-repeat="review in itemCtrl.temporaryItem.reviews">{{review.username}} rated this item {{review.ratings}}</li>
+      <li><p>{{review.review}}</p></li>
     </ul>
   </div>
   <div class="write_review" ng-if="userCtrl.loggedInUsername">
-    <button type="button" ng-if="itemCtrl.displayReviewForm == 0" ng-click="itemCtrl.displayReviewForm = 1" value="add a review.">add your review.</button>
-    <form ng-if="itemCtrl.displayReviewForm == 1" ng-submit="itemCtrl.addReview(item._id)">
-      <input type="hidden" ng-model="itemCtrl.reviewInfo.reviews.username" value="{{userCtrl.loggedInUsername}}" />
+    <button type="button" ng-if="itemCtrl.displayReviewForm == 0" ng-click="itemCtrl.displayReviewForm = 1; itemCtrl.reviewInfo.reviews.username = userCtrl.loggedInUsername" value="add a review.">add your review.</button>
+    <form ng-if="itemCtrl.displayReviewForm == 1" ng-submit="itemCtrl.addReview(itemCtrl.temporaryItem._id)">
+      <input type="hidden" ng-model="itemCtrl.reviewInfo.reviews.username" />
       rating: <input type="number" min="1" max="5" ng-model="itemCtrl.reviewInfo.reviews.ratings" /><br />
       description: <input type="text" ng-model="itemCtrl.reviewInfo.reviews.review" /><br />
       <input type="submit" value="submit review.">
