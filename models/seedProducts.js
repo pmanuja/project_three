@@ -31,28 +31,28 @@ module.exports = [
   {
     name: 'Headphones',
     price: 90,
-    category: "Over Ear Headphones",
+    category: "Electronics",
     description: 'Upgraded Sony MDR 7506 Replacement Ear Pads by Wicked Cushions - Also Compatible with MDR V6 / MDR V7 / MDR CD900ST - Black',
     image: '../images/headphones.jpg'
   },
   {
     name: 'Office Desk',
     price: 5,
-    category: "Office Furniture",
+    category: "Office Supplies",
     description: 'SHW L-Shaped Home Office Corner Desk Wood Top, Walnut',
     image: '../images/officeDesk.jpg'
   },
   {
     name: 'Printer',
     price: 29.99,
-    category: "Office Supplies",
+    category: "Electronics",
     description: 'Canon Office Products PIXMA TS5020 BK Wireless color Photo Printer with Scanner & Copier, Black',
     image: '../images/printer.jpg'
   },
   {
     name: 'USB Connector',
     price: 15.99,
-    category: "Apple Accessories",
+    category: "Electronics",
     description: 'USB C Hub - USB Connector, 4 Ports Expander 3.0 Data Converter to Type C USB Hub Adapter for Macbook, MacBook Pro iMac, Google ChromeBook Pixelbook, XPS, Laptops, Samsung S9, S8 and More USB-C Devices',
     image: '../images/USBConnector.jpg'
   }
