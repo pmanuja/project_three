@@ -96,6 +96,8 @@ app.controller('ShopController', ['$http', function($http){
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
+  this.pageToDisplay = 0;
+
   this.openShop = function(){
     $http({
       method:'GET',
@@ -104,16 +106,16 @@ app.controller('UserController', ['$http', function($http){
       console.log(response);
       controller.loggedInUsername = response.data.username;
       controller.loggedInUserID = response.data._id
-      if(controller.loggedInUsername){ //Update the shoping cart
+      if(controller.loggedInUsername){ //Update the shopping cart
         controller.getShoppingCart(controller.loggedInUserID);
       }
     }, function(){
       console.log('error');
       if(controller.loggedInUsername === undefined){
         console.log(`No session exists - username not found. (This may be OK!)`);
-      }
-    })
-  }
+      };
+    });
+  };
 
   this.createUser = function(){
     $http({
@@ -191,8 +193,8 @@ app.controller('UserController', ['$http', function($http){
       controller.getShoppingCart(controller.loggedInUserID);
     }, function(){
       console.log(`Error in .addToCart in UserController`);
-    })
-  }
+    });
+  };
 
   controller.openShop();
 }]);
