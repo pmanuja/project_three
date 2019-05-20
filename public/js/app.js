@@ -117,6 +117,10 @@ app.controller('UserController', ['$http', function($http){
       }
     }).then(function(response){
       console.log(response);
+      controller.createUsername = null;
+      controller.createPassword = null;
+      controller.createEmail = null;
+
     }, function(error){
       console.log('error');
     });
