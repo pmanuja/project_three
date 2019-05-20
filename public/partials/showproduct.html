@@ -33,7 +33,15 @@
     <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(itemCtrl.temporaryItem._id)">
       <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
       <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.category" placeholder="{{itemCtrl.temporaryItem.category}}"/><br>
+      <input list="category" placeholder="{{itemCtrl.temporaryItem.category}}">
+      <datalist id="category">
+        <option value="Electronics"></option>
+        <option value="Books"></option>
+        <option value="Office Supplies"></option>
+        <option value="Etc."></option>
+      </datalist>
+      <br />
+      <!-- <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.category" placeholder="{{itemCtrl.temporaryItem.category}}"/><br> -->
       <textarea ng-model="itemCtrl.updateItemAttrs.temporaryItem.description" placeholder="{{itemCtrl.temporaryItem.description}}" style="width:300px; height:100px;" /></textarea><br>
       <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.image" placeholder="{{itemCtrl.temporaryItem.image}}" /><br>
 
