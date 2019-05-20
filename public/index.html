@@ -10,11 +10,15 @@
     <link rel="stylesheet" href="/css/app.css">
   </head>
   <body>
-    <nav ng-include="'partials/nav.html'"></nav>
-    <div class="welcome" ng-include="'partials/welcome.html'"></div>
-    <div class="storefront" ng-include="'partials/storefront.html'"></div>
-    <!-- <div class="users" ng-include="'partials/users.html'"></div> -->
-    <footer ng-include="'partials/footer.html'"></footer>
+    <div class="flexRow">
+      <nav class="singleItem widthTwenty" ng-include="'partials/nav.html'"></nav>
+      <div class="widthEighty flexColumn">
+        <div class="singleItem" class="welcome" ng-include="'partials/welcome.html'"></div>
+        <div  class="singleItem" class="storefront" ng-include="'partials/storefront.html'"></div>
+      <!-- <div class="users" ng-include="'partials/users.html'"></div> -->
+        <footer ng-include="'partials/footer.html'"></footer>
+      </div>
+    </div>
   </body>
 </html>
 

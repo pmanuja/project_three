@@ -9,3 +9,28 @@ button {
 ul {
   list-style-type: none;
 }
+
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.singleItem{
+  border: 1px solid black;
+
+}
+.widthEighty{
+  width: 80%;
+}
+
+.widthTwenty{
+  width: 15%;
+  height: 500px;
+}

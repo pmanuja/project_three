@@ -96,6 +96,9 @@ app.controller('UserController', ['$http', function($http){
       controller.loggedInUsername = response.data.username;
     }, function(){
       console.log('error');
+      if(controller.loggedInUsername === undefined){
+        console.log(`No session exists - username not found. (This may be OK!)`);
+      }
     })
   }
 

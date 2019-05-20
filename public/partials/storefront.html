@@ -14,8 +14,8 @@
     </div>
   </div>
 
-  <ul>
-    <li ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
+  <ul class="flexColumn">
+    <li class="singleItem" ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 500px; "/>
       <p>{{item.description}}</p>
       <!-- edit item link for each item -->
