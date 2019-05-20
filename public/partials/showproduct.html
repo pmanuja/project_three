@@ -1,12 +1,11 @@
-<div class="product_details" ng-repeat="item in sctrl.items">
-  <h1>{{item.name}}</h1>
-  <img src="{{item.image}}" alt="{{item.name}} image">
-  <ul>
-    <li>${{item.price}}</li>
-    <li>
-      <p>{{item.description}}</p>
-    </li>
-  </ul>
+<div class="modal-textbox">
+
+  <a id="close" href="#" ng-click="itemCtrl.showModal=false">Close</a>
+
+  <h4>{{item.name}}</h4>
+  <p>{{item.description}}</p>
+  <p>${{item.price}}</p>
+</div>
   <div class="class">
     <!-- add ng repeat in p tags for formatting of reviews object in item schema when it was created -->
   </div>
