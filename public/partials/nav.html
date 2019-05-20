@@ -35,4 +35,10 @@
     </form>
     <button ng-click="ctrl.logOut()" ng-if="ctrl.loggedInUsername"> log out </button>
 
+    <!-- Used to display shopping cart contents. Temporary - this is more of a test than final code -->
+    <ul class="borderThis" ng-if="ctrl.loggedInUsername">
+      <li class="borderThis" ng-repeat="cartItem in ctrl.userShoppingCart">
+        {{cartItem.item.name}}, {{cartItem.quantity}}</li>
+    </ul>
+
 </div>
