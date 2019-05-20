@@ -1,15 +1,26 @@
-<div class="modal-textbox">
+<header>
+  <h1>bootcamp boutique.</h1>
+</header>
 
-  <a id="close" href="#" ng-click="itemCtrl.showModal=false">Close</a>
-
-  <h4>{{item.name}}</h4>
-  <p>{{item.description}}</p>
-  <p>${{item.price}}</p>
-</div>
-  <div class="class">
-    <!-- add ng repeat in p tags for formatting of reviews object in item schema when it was created -->
+<div class="product_details">
+  <h1>{{itemCtrl.temporaryItem.name}}</h1>
+  <img src="{{itemCtrl.temporaryItem.image}}" alt="{{itemCtrl.temporaryItem.name}} image">
+  <ul>
+    <li>${{itemCtrl.temporaryItem.price}}</li>
+    <li>
+      <p>{{itemCtrl.temporaryItem.description}}</p>
+    </li>
+  </ul>
+  <div class="view_reviews">
+    <ul>
+      <li>{{itemCtrl.temporaryItem.reviews.username}} rating this item {{itemCtrl.temporaryItem.reviews.ratings}}</li>
+      <li><p>{{itemCtrl.temporaryItem.reviews.review}}</p></li>
+    </ul>
   </div>
-  <div class="review">
-    <!-- add form for submitting review for a product, again once we know what the reviews will look like in the product schema -->
+  <div class="write_review" ng-if="userCtrl.loggedInUsername">
+    <h5>add your review.</h5>
+    <form >
+
+    </form>
   </div>
 </div>
