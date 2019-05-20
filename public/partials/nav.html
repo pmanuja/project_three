@@ -12,32 +12,32 @@
   <li><a href="#" target="_blank">log-out</a></li>
 </ul> -->
 
-<div class="login" ng-controller="UserController as ctrl">
+<div class="login">
   <ul style="list-style-type: none;">
     <li><a href="#" target="_blank">home</a></li>
     <li><a href="#" target="_blank">shop</a></li>
     <li><a href="#" target="_blank">my shopping cart</a></li>
-    <li><a href="#" target="_blank" ng-if="(!ctrl.loggedInUsername)">log in</a></li>
+    <li><a href="#" target="_blank" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
   </ul>
-  <ul ng-if="ctrl.loggedInUsername">
-    <li>welcome, {{ctrl.loggedInUsername}}</li>
+  <ul ng-if="userCtrl.loggedInUsername">
+    <li>welcome, {{userCtrl.loggedInUsername}}</li>
   </ul>
-    <form ng-submit="ctrl.createUser()" ng-if="(!ctrl.loggedInUsername)">
-      <input class="" type="text" ng-model="ctrl.createUsername" placeholder="Username" /><br>
-      <input class="" type="password" ng-model="ctrl.createPassword" placeholder="Password" /><br>
-      <input class="" type="email" ng-model="ctrl.createEmail" placeholder="email" /><br>
+    <form ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
+      <input class="" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
       <input type="submit" value="create new user">
     </form>
-    <form ng-submit="ctrl.logIn()" ng-if="(!ctrl.loggedInUsername)">
-      <input class="" type="text" ng-model="ctrl.username" placeholder="Username" /><br>
-      <input class="" type="password" ng-model="ctrl.password" placeholder="Password" /><br>
+    <form ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
       <input type="submit" value="log in">
     </form>
-    <button ng-click="ctrl.logOut()" ng-if="ctrl.loggedInUsername"> log out </button>
+    <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
 
     <!-- Used to display shopping cart contents. Temporary - this is more of a test than final code -->
-    <ul class="borderThis" ng-if="ctrl.loggedInUsername">
-      <li class="borderThis" ng-repeat="cartItem in ctrl.userShoppingCart">
+    <ul class="borderThis" ng-if="userCtrl.loggedInUsername">
+      <li class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart">
         {{cartItem.item.name}}, {{cartItem.quantity}}</li>
     </ul>
 

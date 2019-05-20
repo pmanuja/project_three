@@ -11,11 +11,12 @@
   </head>
   <body>
 
-    <div class="flexRow">
+    <div class="flexRow" ng-controller="UserController as userCtrl">
       <nav class="borderThis widthTwenty sticky" ng-include="'partials/nav.html'"></nav>
-      <div class="widthEighty flexColumn">
+      <div class="widthEighty flexColumn" ng-controller="ShopController as itemCtrl">
         <div class="borderThis" class="welcome" ng-include="'partials/welcome.html'"></div>
         <div  class="borderThis" class="storefront" ng-include="'partials/storefront.html'"></div>
+        <!-- <div> div for user's shopping cart </div> -->
       <!-- <div class="users" ng-include="'partials/users.html'"></div> -->
         <footer ng-include="'partials/footer.html'"></footer>
       </div>
