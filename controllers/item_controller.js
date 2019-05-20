@@ -38,6 +38,25 @@ router.delete(`/:id`, function(req,res){
   });
 });
 
+//PUT - add an review to an item
+router.put(`/addReview/:id`, function(req,res){
+  Items.findById(req.params.id, function(error, editedItem){
+    if(error){
+      console.log(editedItem);
+      console.log(`Error in PUT: add review to item`);
+      console.log(error);
+    } else {
+      console.log(req.body);
+      console.log(req.body.reviews);
+      editedItem.reviews.push(req.body.reviews);
+      editedItem.save(function(response){
+        res.json(editedItem);
+      });
+    };
+  });
+});
+
+
 //PUT - edit an item in the database
 router.put(`/:id`, function(req,res){
   Items.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(error, editedItem){
