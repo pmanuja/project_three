@@ -171,12 +171,28 @@ app.controller('UserController', ['$http', function($http){
       method:`GET`,
       url:`/users/getCartContents/${userID}`
     }).then(function(response){
-      console.log(response);
+      //console.log(response);
       controller.userShoppingCart = response.data;
     }, function() {
       console.log('error');
     });
   };
+
+  this.addToCart = function(amountToAdd, itemID){
+    $http({
+      method: `PUT`,
+      url:`/users/addToCart/${controller.loggedInUserID}`,
+      data: {
+        itemID: itemID,
+        quantity: amountToAdd,
+      },
+    }).then(function(response){
+      console.log(`Item added?`);
+      controller.getShoppingCart(controller.loggedInUserID);
+    }, function(){
+      console.log(`Error in .addToCart in UserController`);
+    })
+  }
 
   controller.openShop();
 }]);

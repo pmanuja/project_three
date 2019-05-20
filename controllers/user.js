@@ -62,6 +62,8 @@ users.put(`/addToCart/:id`, function(req,res) {
   });
 });
 
+
+//Need to handle item deletion properly!!!
 //GET - the full list of items from the user's cart.
 users.get(`/getCartContents/:id`, function(req,res){
   Users.findById(req.params.id, function(error, foundUser){
@@ -70,15 +72,15 @@ users.get(`/getCartContents/:id`, function(req,res){
     for(let i = 0; i < userCart.length; i++) {
       console.log(`Item ${i}`);
       Items.findById(userCart[i].itemID, function(error, foundItem){
-        console.log(foundItem);
+        //console.log(foundItem);
         let outputItem = {
           item: foundItem,
           quantity: userCart[i].quantity,
         };
-        console.log(outputItem);
+        //console.log(outputItem);
         outputCart.push(outputItem);
-        if(i === userCart.length-1) {
-          console.log(outputCart);
+        if(outputCart.length === userCart.length) {
+          console.log(outputCart.length);
           res.json(outputCart);
         }
       });
