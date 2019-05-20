@@ -10,18 +10,25 @@ const Users = require('../models/user.js');
 router.post(`/`, function(req,res){
   if(req.body.username && req.body.password){
     Users.findOne({username:req.body.username}, function(error, foundUser){
-      if(bcrypt.compareSync(req.body.password, foundUser.password)){
-        req.session.currentUser = foundUser;
-        res.status(201).json({
-          status:201,
-          message:'session created'
-        });
+      if(foundUser){
+        if(bcrypt.compareSync(req.body.password, foundUser.password)){
+          req.session.currentUser = foundUser;
+          res.status(201).json({
+            status:201,
+            message:'session created'
+          });
+        } else {
+          res.status(401).json({
+            status:401,
+            message:'password incorrect'
+          });
+        }
       } else {
         res.status(401).json({
           status:401,
-          message:'login failed'
-        });
-      }
+          message:'user not found'
+      });
+    }
     });
   }
 });

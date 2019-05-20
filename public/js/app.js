@@ -5,6 +5,15 @@ app.controller('ShopController', ['$http', function($http){
   this.indexOfEditFormToShow = null;
   this.createNewItem = {};
   this.updateItemAttrs = {};
+  this.showModal = false;
+  this.itemIndex = null;
+
+  this.showProductDetails = function($index){
+    console.log("view product details" + $index);
+    controller.showModal = true;
+    controller.itemIndex = $index;
+  }
+
 
   this.deleteItem = function(item_id) {
       console.log('delete me ' + item_id);
@@ -18,6 +27,18 @@ app.controller('ShopController', ['$http', function($http){
       }, function(error) {
         console.log(error);
       });
+  };
+
+  this.getUsername = function(){
+    $http({
+      method:'GET',
+      url: '/app'
+    }).then(function(response){
+      console.log(response);
+      controller.loggedInUsername = response.data.username;
+    }, function(){
+      console.log('error');
+    })
   }
 
 
@@ -60,7 +81,7 @@ app.controller('ShopController', ['$http', function($http){
       method: 'GET',
       url: '/items'
     }).then(function(response){
-      console.log(response.data);
+      //console.log(response.data);
       controller.items = response.data;
 
     }, function(error) {
@@ -75,10 +96,29 @@ app.controller('ShopController', ['$http', function($http){
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
+  this.openShop = function(){
+    $http({
+      method:'GET',
+      url: '/app'
+    }).then(function(response){
+      console.log(response);
+      controller.loggedInUsername = response.data.username;
+      controller.loggedInUserID = response.data._id
+      if(controller.loggedInUsername){ //Update the shoping cart
+        controller.getShoppingCart(controller.loggedInUserID);
+      }
+    }, function(){
+      console.log('error');
+      if(controller.loggedInUsername === undefined){
+        console.log(`No session exists - username not found. (This may be OK!)`);
+      }
+    })
+  }
+
   this.createUser = function(){
     $http({
       method:'POST',
-      url: 'users',
+      url: '/users',
       data: {
         username: this.createUsername,
         password: this.createPassword,
@@ -86,13 +126,17 @@ app.controller('UserController', ['$http', function($http){
       }
     }).then(function(response){
       console.log(response);
+      controller.createUsername = null;
+      controller.createPassword = null;
+      controller.createEmail = null;
+
     }, function(error){
       console.log('error');
     });
   };
 
   this.logIn = function(){
-    $http:({
+    $http({
       method:'POST',
       url: '/sessions',
       data: {
@@ -103,6 +147,7 @@ app.controller('UserController', ['$http', function($http){
       console.log(response);
       controller.username = null;
       controller.password = null;
+      controller.openShop();
     }, function(){
       console.log('error');
     });
@@ -114,8 +159,40 @@ app.controller('UserController', ['$http', function($http){
       url:'/sessions'
     }).then(function(response){
       console.log(response);
+      controller.loggedInUsername = null;
     }, function(){
       console.log('error');
     });
   };
+
+  //Gets the user's shopping cart
+  this.getShoppingCart = function(userID) {
+    $http({
+      method:`GET`,
+      url:`/users/getCartContents/${userID}`
+    }).then(function(response){
+      //console.log(response);
+      controller.userShoppingCart = response.data;
+    }, function() {
+      console.log('error');
+    });
+  };
+
+  this.addToCart = function(amountToAdd, itemID){
+    $http({
+      method: `PUT`,
+      url:`/users/addToCart/${controller.loggedInUserID}`,
+      data: {
+        itemID: itemID,
+        quantity: amountToAdd,
+      },
+    }).then(function(response){
+      console.log(`Item added?`);
+      controller.getShoppingCart(controller.loggedInUserID);
+    }, function(){
+      console.log(`Error in .addToCart in UserController`);
+    })
+  }
+
+  controller.openShop();
 }]);

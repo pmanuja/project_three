@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Items = require(`../models/items.js`);
 
+const seedProducts = require(`../models/seedProducts.js`);
+
 //GET - full list of items from database
 router.get(`/`, function(req,res){
   Items.find({}, function(error, allItems){
@@ -47,4 +49,15 @@ router.put(`/:id`, function(req,res){
   });
 });
 
+// if you don't want to add your own data, use this seed route @ http://localhost:3000/products/seed/newmuffins
+router.get('/seed/newproducts', (req, res) => {
+  console.log("i m in seed");
+  Items.create(seedProducts, (error, createdProducts) => {
+    if(error){
+      console.log(`Error in SEED: Item`);
+    } else {
+      res.json(createdProducts);
+    }
+  });
+})
 module.exports = router;

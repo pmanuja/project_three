@@ -1,7 +1,78 @@
+
+
+/* temporary styles for debugging */
+.borderThis{
+  border: 1px solid black;
+}
+
+/* End temp. styles */
+
 body {
   text-align: center;
 }
 
 button {
-  width: 200px;
+  width: 150px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.flexColumn{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.flexWrap{
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+/* Use to define appearance of each item  */
+.singleItem{
+  margin: .25em auto;
+  min-height: 20em;
+  max-width: 49%;
+  /* width: 100%; */
+}
+
+.widthEighty{
+  width: 80%;
+}
+
+.widthTwenty{
+  width: 20%;
+  /* Not sure how to address the height just yet. Hardcoded for now. */
+  height: 800px;
+}
+
+.widthFull{
+  width: 100%;
+}
+
+.sticky{
+  position: sticky;
+  top: 0;
+}
+
+
+.modal-textbox {
+  background-color: khaki;
+	height: 350px;
+	width: 450px;
+	border-radius: 2px;
+	margin: auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+#close{
+  margin-right: 0px;
 }

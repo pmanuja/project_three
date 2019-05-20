@@ -1,0 +1,44 @@
+<!-- <h5><a href="#" target="_blank">home</a></h5>
+<h5><a href="#" target="_blank">shop</a></h5>
+<h5><a href="#" target="_blank">my shopping cart</a></h5>
+<h5><a href="#" target="_blank">log-in</a></h5>
+<h5><a href="#" target="_blank">log-out</a></h5> -->
+
+<!-- <ul class="nav" style="list-style-type: none;">
+  <li><a href="#" target="_blank">home</a></li>
+  <li><a href="#" target="_blank">shop</a></li>
+  <li><a href="#" target="_blank">my shopping cart</a></li>
+  <li><a href="#" target="_blank">log-in</a></li>
+  <li><a href="#" target="_blank">log-out</a></li>
+</ul> -->
+
+<div class="login">
+  <ul style="list-style-type: none;">
+    <li><a href="#" target="_blank">home</a></li>
+    <li><a href="#" target="_blank">shop</a></li>
+    <li><a href="#" target="_blank">my shopping cart</a></li>
+    <li><a href="#" target="_blank" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
+  </ul>
+  <ul ng-if="userCtrl.loggedInUsername">
+    <li>welcome, {{userCtrl.loggedInUsername}}</li>
+  </ul>
+    <form ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
+      <input class="" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
+      <input type="submit" value="create new user">
+    </form>
+    <form ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
+      <input class="" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
+      <input type="submit" value="log in">
+    </form>
+    <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
+
+    <!-- Used to display shopping cart contents. Temporary - this is more of a test than final code -->
+    <ul class="borderThis" ng-if="userCtrl.loggedInUsername">
+      <li class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart">
+        {{cartItem.item.name}}, {{cartItem.quantity}}</li>
+    </ul>
+
+</div>
