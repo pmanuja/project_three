@@ -31,57 +31,75 @@ users.post('/', (req, res) => {
 users.put(`/addToCart/:id`, function(req,res) {
   Users.findById(req.params.id, function(error, foundUser){
     //Checks if the item reference is already in the cart. Gives the index if so, otherwise itemIndex = -1.
-    let itemIndex = foundUser.shoppingCart.findIndex(function(element){
-      if(element.itemID === req.body.itemID) {
-        console.log("found!");
-        return true;
-      } else {
-        return false;
-      }
-    });
-    console.log(itemIndex);
-    let shoppingCartItem = {
-      itemID: req.body.itemID,
-      quantity: parseInt(req.body.quantity),
-    };
 
-    if(itemIndex === -1) { //Create a new item reference in the cart
-      foundUser.shoppingCart.push(shoppingCartItem);
-    } else { //Add or remove item quantity
-      foundUser.shoppingCart[itemIndex].quantity += shoppingCartItem.quantity;
+    if(foundUser){ //Avoids crashes if the user is not logged in
+      let itemIndex = foundUser.shoppingCart.findIndex(function(element){
+        if(element.itemID === req.body.itemID) {
+          return true;
+        } else {
+          return false;
+        }
+      });
 
-      if(foundUser.shoppingCart[itemIndex].quantity <= 0) { //Remove the item
-        foundUser.shoppingCart.splice(itemIndex,1);
+      let shoppingCartItem = {
+        itemID: req.body.itemID,
+        quantity: parseInt(req.body.quantity),
+      };
+
+      if(itemIndex === -1) { //Create a new item reference in the cart
+        foundUser.shoppingCart.push(shoppingCartItem);
+      } else { //Add or remove item quantity
+        if(req.body.removeFromCart === true) { //Get rid of the item
+          foundUser.shoppingCart[itemIndex].quantity -= foundUser.shoppingCart[itemIndex].quantity;
+        } else { //Change item count normally
+          foundUser.shoppingCart[itemIndex].quantity += shoppingCartItem.quantity;
+        }
+
+        if(foundUser.shoppingCart[itemIndex].quantity <= 0) { //Remove the item
+          foundUser.shoppingCart.splice(itemIndex,1);
+        }
       }
+
+      foundUser.save( function(error,data){ //Saves the changes in the database
+        res.json(foundUser);
+      });
     }
 
-    foundUser.save( function(error,data){ //Saves the changes in the database
-      res.json(foundUser);
-    });
 
   });
 });
 
 
-//Need to handle item deletion properly!!!
+
 //GET - the full list of items from the user's cart.
+//If items have been deleted from the database, it will remove them from the shopping cart automatically
 users.get(`/getCartContents/:id`, function(req,res){
   Users.findById(req.params.id, function(error, foundUser){
     let userCart = foundUser.shoppingCart;
     let outputCart = [];
+    let removedItemIndicies = [];
     for(let i = 0; i < userCart.length; i++) {
-      console.log(`Item ${i}`);
       Items.findById(userCart[i].itemID, function(error, foundItem){
-        //console.log(foundItem);
+        if(foundItem === null) { //No item was found
+          removedItemIndicies.push(i);
+        }
         let outputItem = {
           item: foundItem,
           quantity: userCart[i].quantity,
         };
-        //console.log(outputItem);
         outputCart.push(outputItem);
+
         if(outputCart.length === userCart.length) {
-          console.log(outputCart.length);
-          res.json(outputCart);
+          //sort item indicies, largest to smallest
+          removedItemIndicies.sort(function(a, b){return b - a});
+          //Remove the deleted items from the shopping cart
+          for(let j = 0; j < removedItemIndicies.length; j++) {
+            foundUser.shoppingCart.splice(removedItemIndicies[j],1);
+          }
+          console.log(foundUser.shoppingCart);
+          foundUser.save( function(error,data){
+            res.json(outputCart);
+          });
         }
       });
     }; //End loop

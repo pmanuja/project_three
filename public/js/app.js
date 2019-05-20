@@ -7,12 +7,13 @@ app.controller('ShopController', ['$http', function($http){
   this.updateItemAttrs = {};
   this.showModal = false;
   this.itemIndex = null;
+  this.displayReviewForm = 0;
 
   this.showProductDetails = function($index){
     console.log("view product details" + $index);
     controller.showModal = true;
     controller.itemIndex = $index;
-  }
+  };
 
 
   this.deleteItem = function(item_id) {
@@ -41,18 +42,34 @@ app.controller('ShopController', ['$http', function($http){
     })
   }
 
+  this.addReview = function(item_id) {
+    console.log(`line 46`);
+    console.log(this.reviewInfo);
+    $http({
+      method:'PUT',
+      url: '/items/addReview/' + item_id,
+      data: this.reviewInfo
+    }).then(function(response){
+      console.log(response);
+      controller.getItems();
+      controller.displayReviewForm = 0;
+      controller.reviewInfo = {};
+    }, function(error) {
+      console.log(error);
+    });
+  };
 
   this.updateItem = function(item_id) {
     console.log("hello update me" + item_id);
     $http({
       method: 'PUT',
       url: '/items/' + item_id,
-      data: this.updateItemAttrs
+      data: this.updateItemAttrs.temporaryItem
     }).then(function(response){
       console.log(response);
       controller.getItems(); // check with team to refactor it
       controller.updateItemAttrs = {};
-      this.indexOfEditFormToShow = null;
+      controller.indexOfEditFormToShow = null;
     }, function(error) {
       console.log(error);
     });
@@ -83,7 +100,6 @@ app.controller('ShopController', ['$http', function($http){
     }).then(function(response){
       //console.log(response.data);
       controller.items = response.data;
-
     }, function(error) {
       console.log(error);
     });
@@ -96,6 +112,22 @@ app.controller('ShopController', ['$http', function($http){
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
+  this.pageToDisplay = 0;
+
+  this.getSubTotal = function(cartItems){
+    if(cartItems != null){
+      console.log("get subtotal");
+      var total = 0;
+      for(let i = 0; i < cartItems.length; i++){
+          let cartItem = cartItems[i];
+          total += (cartItem.item.price * cartItem.quantity);
+      }
+        console.log(" subtotal" + total);
+
+    }
+    return total;
+  }
+
   this.openShop = function(){
     $http({
       method:'GET',
@@ -104,16 +136,16 @@ app.controller('UserController', ['$http', function($http){
       console.log(response);
       controller.loggedInUsername = response.data.username;
       controller.loggedInUserID = response.data._id
-      if(controller.loggedInUsername){ //Update the shoping cart
+      if(controller.loggedInUsername){ //Update the shopping cart
         controller.getShoppingCart(controller.loggedInUserID);
       }
     }, function(){
       console.log('error');
       if(controller.loggedInUsername === undefined){
         console.log(`No session exists - username not found. (This may be OK!)`);
-      }
-    })
-  }
+      };
+    });
+  };
 
   this.createUser = function(){
     $http({
@@ -191,8 +223,8 @@ app.controller('UserController', ['$http', function($http){
       controller.getShoppingCart(controller.loggedInUserID);
     }, function(){
       console.log(`Error in .addToCart in UserController`);
-    })
-  }
+    });
+  };
 
   controller.openShop();
 }]);

@@ -1,7 +1,11 @@
-<div  class="items-list">
+<header>
+  <h1>bootcamp boutique.</h1>
+</header>
+
+<div class="items-list">
 
   <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
-  <div class="adminOnly">
+  <div class="adminOnly" ng-if="userCtrl.loggedInUsername">
     <div class="new-item">
       <form ng-submit="itemCtrl.createItem()">
         <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
@@ -18,43 +22,43 @@
     <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
 
+      <br />
+      <button ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item">View Details</button>
+      <!-- <div ng-if="itemCtrl.showModal && $index === itemCtrl.itemIndex" id="modal">
 
-      <button ng-click="itemCtrl.showProductDetails($index)">View Details</button>
-      <div ng-if="itemCtrl.showModal && $index === itemCtrl.itemIndex" id="modal">
-      
         <div ng-include="'partials/showproduct.html'"></div>
 
 
-      </div>
+      </div> -->
       <!-- edit item link for each item -->
-      <a
+      <!-- <a
       ng-if="$index !== itemCtrl.indexOfEditFormToShow"
       href="#"
       ng-click="itemCtrl.indexOfEditFormToShow = $index">
       Edit
-      </a>
+      </a> -->
 
 
       <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
       <div class="adminOnly">
 
-        <button ng-click="userCtrl.addToCart(1, item._id)"> Add 1 to cart </button>
+        <button ng-click="userCtrl.addToCart(1, item._id)"> Add to cart </button>
 
       <!-- delete button for each item -->
-        <button ng-click="itemCtrl.deleteItem(item._id)">Delete</button>
+        <!-- <button ng-click="itemCtrl.deleteItem(item._id)">Delete</button> -->
 
       <!-- edit item form -->
-        <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(item._id)">
-          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.name" value="item.name"/><br>
-          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.price"  value="item.price"/><br>
-          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.category" value="item.category"/><br>
-          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.description" value="item.description"/><br>
-          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.image" value="item.image" /><br>
+        <!-- <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(item._id)">
+          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.name" placeholder="{{item.name}}"/><br>
+          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.price"  placeholder="{{item.price}}"/><br>
+          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.category" placeholder="{{item.category}}"/><br>
+          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.description" placeholder="{{item.description}}"/><br>
+          <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.image" placeholder="{{item.image}}" /><br>
 
           <input type="submit" value="Update Item">
           <a href="/" ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = -1" >Cancel</a>
 
-        </form>
+        </form> -->
       </div>
     </li>
   </ul>
