@@ -76,3 +76,22 @@ ul {
 #close{
   margin-right: 0px;
 }
+.showCart{
+  display: flex;
+  justify-content: flex-start;
+}
+
+.showCart img{
+  display: block;
+  width: 200px;
+  hieght: 200px;
+}
+
+.showCart p{
+  width: 400px;
+
+}
+.qty-price{
+  display: flex;
+  flex-direction: column;
+}

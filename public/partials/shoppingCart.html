@@ -1,0 +1,29 @@
+
+  <h3>Your Cart: {{userCtrl.temporaryCartItem.length}} items</h3>
+  <div class="" ng-repeat="cartItem in userCtrl.temporaryCartItem" >
+
+    <div class="showCart">
+    <div class="cart-item-image">
+      <img src="{{cartItem.item.image}}" alt="">
+
+    </div>
+    <div class="cart-item-desc">
+        <p>{{cartItem.item.description}}</p>
+    </div>
+    <div class="qty-price">
+      <div class="cart-item-qty">
+        <h4> Qyt: {{cartItem.quantity}}</h4>
+      </div>
+      <div class="cart-item-total">
+      <h4> Price : ${{cartItem.item.price}} ea</h4>
+      </div>
+      <div class="">
+        <h3>Total : ${{cartItem.item.price * cartItem.quantity}}</h3>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>
+<h2> Subtotal: $</h2>
