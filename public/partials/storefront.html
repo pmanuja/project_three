@@ -18,6 +18,8 @@
     <li class="singleItem borderThis" ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
       <p>{{item.description}}</p>
+
+      <h6> Add view details </h6>
       <!-- edit item link for each item -->
       <a
       ng-if="$index !== sctrl.indexOfEditFormToShow"
