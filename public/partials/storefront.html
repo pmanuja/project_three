@@ -17,9 +17,18 @@
   <ul class="flexRow flexWrap widthFull">
     <li class="singleItem borderThis" ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
-      <p>{{item.description}}</p>
 
-      <h6> Add view details </h6>
+
+      <button ng-click="sctrl.showProductDetails($index)">View Details</button>
+      <div ng-if="sctrl.showModal && $index === sctrl.itemIndex" id="modal">
+        <div class="modal-textbox">
+          <a id="close" href="#" ng-click="sctrl.showModal=false">Close</a>
+          <h4>{{item.name}}</h1>
+          <p>{{item.description}}</p>
+          <p>${{item.price}}</p>
+        </div>
+
+      </div>
       <!-- edit item link for each item -->
       <a
       ng-if="$index !== sctrl.indexOfEditFormToShow"

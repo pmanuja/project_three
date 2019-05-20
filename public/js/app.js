@@ -5,6 +5,15 @@ app.controller('ShopController', ['$http', function($http){
   this.indexOfEditFormToShow = null;
   this.createNewItem = {};
   this.updateItemAttrs = {};
+  this.showModal = false;
+  this.itemIndex = null;
+
+  this.showProductDetails = function($index){
+    console.log("view product details" + $index);
+    controller.showModal = true;
+    controller.itemIndex = $index;
+  }
+
 
   this.deleteItem = function(item_id) {
       console.log('delete me ' + item_id);
