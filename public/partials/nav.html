@@ -14,10 +14,10 @@
 
 <div class="login">
   <ul style="list-style-type: none;">
-    <li><a href="#" target="_blank">home</a></li>
-    <li><a href="#" target="_blank">shop</a></li>
+    <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">home</a></li>
+    <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">shop</a></li>
     <li><a href="#" target="_blank">my shopping cart</a></li>
-    <li><a href="#" target="_blank" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
+    <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
   </ul>
   <ul ng-if="userCtrl.loggedInUsername">
     <li>welcome, {{userCtrl.loggedInUsername}}</li>
@@ -39,6 +39,8 @@
     <ul class="borderThis" ng-if="userCtrl.loggedInUsername">
       <li class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart">
         {{cartItem.item.name}}, {{cartItem.quantity}}</li>
-    </ul>
 
+
+    </ul>
+      <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button>
 </div>
