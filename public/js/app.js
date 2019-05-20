@@ -13,7 +13,7 @@ app.controller('ShopController', ['$http', function($http){
     console.log("view product details" + $index);
     controller.showModal = true;
     controller.itemIndex = $index;
-  }
+  };
 
 
   this.deleteItem = function(item_id) {
@@ -64,12 +64,12 @@ app.controller('ShopController', ['$http', function($http){
     $http({
       method: 'PUT',
       url: '/items/' + item_id,
-      data: this.updateItemAttrs
+      data: this.updateItemAttrs.temporaryItem
     }).then(function(response){
       console.log(response);
       controller.getItems(); // check with team to refactor it
       controller.updateItemAttrs = {};
-      this.indexOfEditFormToShow = null;
+      controller.indexOfEditFormToShow = null;
     }, function(error) {
       console.log(error);
     });
