@@ -22,7 +22,9 @@
       <button ng-click="itemCtrl.showProductDetails($index)">View Details</button>
       <div ng-if="itemCtrl.showModal && $index === itemCtrl.itemIndex" id="modal">
         <div class="modal-textbox">
+
           <a id="close" href="#" ng-click="itemCtrl.showModal=false">Close</a>
+
           <h4>{{item.name}}</h4>
           <p>{{item.description}}</p>
           <p>${{item.price}}</p>

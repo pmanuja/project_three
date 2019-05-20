@@ -1,0 +1,16 @@
+<div class="product_details" ng-repeat="item in sctrl.items">
+  <h1>{{item.name}}</h1>
+  <img src="{{item.image}}" alt="{{item.name}} image">
+  <ul>
+    <li>${{item.price}}</li>
+    <li>
+      <p>{{item.description}}</p>
+    </li>
+  </ul>
+  <div class="class">
+    <!-- add ng repeat in p tags for formatting of reviews object in item schema when it was created -->
+  </div>
+  <div class="review">
+    <!-- add form for submitting review for a product, again once we know what the reviews will look like in the product schema -->
+  </div>
+</div>
