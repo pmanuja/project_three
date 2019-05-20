@@ -72,7 +72,7 @@ app.controller('ShopController', ['$http', function($http){
       method: 'GET',
       url: '/items'
     }).then(function(response){
-      console.log(response.data);
+      //console.log(response.data);
       controller.items = response.data;
 
     }, function(error) {
@@ -94,6 +94,10 @@ app.controller('UserController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.loggedInUsername = response.data.username;
+      controller.loggedInUserID = response.data._id
+      if(controller.loggedInUsername){ //Update the shoping cart
+        controller.getShoppingCart(controller.loggedInUserID);
+      }
     }, function(){
       console.log('error');
       if(controller.loggedInUsername === undefined){
@@ -147,5 +151,19 @@ app.controller('UserController', ['$http', function($http){
       console.log('error');
     });
   };
+
+  //Gets the user's shopping cart
+  this.getShoppingCart = function(userID) {
+    $http({
+      method:`GET`,
+      url:`/users/getCartContents/${userID}`
+    }).then(function(response){
+      console.log(response);
+      controller.userShoppingCart = response.data;
+    }, function() {
+      console.log('error');
+    });
+  };
+
   controller.openShop();
 }]);

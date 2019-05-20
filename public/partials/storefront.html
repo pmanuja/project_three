@@ -14,9 +14,9 @@
     </div>
   </div>
 
-  <ul class="flexColumn">
-    <li class="singleItem" ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
-      <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 500px; "/>
+  <ul class="flexRow flexWrap widthFull">
+    <li class="singleItem borderThis" ng-repeat="item in sctrl.items"> <h4>{{item.name}}</h4>
+      <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
       <p>{{item.description}}</p>
       <!-- edit item link for each item -->
       <a

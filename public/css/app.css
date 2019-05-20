@@ -1,13 +1,23 @@
+
+
+/* temporary styles for debugging */
+.borderThis{
+  border: 1px solid black;
+}
+
+/* End temp. styles */
+
 body {
   text-align: center;
 }
 
 button {
-  width: 200px;
+  width: 150px;
 }
 
 ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .flexColumn{
@@ -22,15 +32,33 @@ ul {
   justify-content: flex-start;
 }
 
-.singleItem{
-  border: 1px solid black;
-
+.flexWrap{
+  flex-flow: wrap;
 }
+
+/* Use to define appearance of each item  */
+.singleItem{
+  margin: 0 auto;
+  height: 20em;
+  max-width: 49%;
+  /* width: 100%; */
+}
+
 .widthEighty{
   width: 80%;
 }
 
 .widthTwenty{
-  width: 15%;
-  height: 500px;
+  width: 20%;
+  /* Not sure how to address the height just yet. Hardcoded for now. */
+  height: 800px;
+}
+
+.widthFull{
+  width: 100%;
+}
+
+.sticky{
+  position: sticky;
+  top: 0;
 }
