@@ -27,8 +27,8 @@ router.post(`/`, function(req,res){
         res.status(401).json({
           status:401,
           message:'user not found'
-      });
-    }
+        });
+      }
     });
   }
 });
