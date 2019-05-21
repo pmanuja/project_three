@@ -139,7 +139,8 @@ app.controller('UserController', ['$http', function($http){
       url: '/app'
     }).then(function(response){
       controller.loggedInUsername = response.data.username;
-      controller.loggedInUserID = response.data._id
+      controller.loggedInUserID = response.data._id;
+      controller.userIsAdmin = response.data.isAdmin;
       if(controller.loggedInUsername){ //Update the shopping cart
         controller.getShoppingCart(controller.loggedInUserID);
       }
