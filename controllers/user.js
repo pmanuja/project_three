@@ -77,8 +77,6 @@ users.put(`/addToCart/:id`, function(req,res) {
   });
 });
 
-
-
 //GET - the full list of items from the user's cart.
 //If items have been deleted from the database, it will remove them from the shopping cart automatically
 users.get(`/getCartContents/:id`, function(req,res){
@@ -127,11 +125,8 @@ users.get(`/getCartContents/:id`, function(req,res){
         }
       });
     }; //End loop
-
   });
 });
-
-
 
 //DELETE - a single user
 users.delete('/:id', (req, res) => {
@@ -146,8 +141,5 @@ users.put('/:id', (req, res) => {
     res.json(updatedUser);
   });
 });
-
-
-
 
 module.exports = users;
