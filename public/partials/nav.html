@@ -14,12 +14,13 @@
 
 <div class="login">
   <ul style="list-style-type: none;">
-    <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">home</a></li>
-    <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">shop</a></li>
+    <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">Home</a></li>
+    <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">Shop</a></li>
     <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
+    <li><a href="#" ng-click="userCtrl.getShoppingCart(userCtrl.loggedInUserID, true); userCtrl.userShoppingCart" ng-if="(userCtrl.loggedInUsername)">View Cart</a></li>
   </ul>
   <ul ng-if="userCtrl.loggedInUsername">
-    <li>welcome, {{userCtrl.loggedInUsername}}</li>
+    <li>Welcome, {{userCtrl.loggedInUsername}}</li>
   </ul>
     <form ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
       <input class="" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
@@ -41,5 +42,5 @@
 
 
     </ul>
-      <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button>
+      <!-- <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button> -->
 </div>

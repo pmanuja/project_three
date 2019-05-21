@@ -109,22 +109,27 @@ app.controller('ShopController', ['$http', function($http){
 
 }])
 
+
+
+
+
 app.controller('UserController', ['$http', function($http){
   const controller = this;
 
   this.pageToDisplay = 0;
 
-  this.getSubTotal = function(cartItems){
+  this.getSubTotal = function(){
+    cartItems = controller.userShoppingCart; //testing!
     if(cartItems != null){
-      console.log("get subtotal");
       var total = 0;
       for(let i = 0; i < cartItems.length; i++){
           let cartItem = cartItems[i];
           total += (cartItem.item.price * cartItem.quantity);
       }
-        console.log(" subtotal" + total);
-
+      //'toFixed' gives 2 decimal places
+        total = total.toFixed(2);
     }
+
     return total;
   }
 
@@ -133,7 +138,6 @@ app.controller('UserController', ['$http', function($http){
       method:'GET',
       url: '/app'
     }).then(function(response){
-      console.log(response);
       controller.loggedInUsername = response.data.username;
       controller.loggedInUserID = response.data._id
       if(controller.loggedInUsername){ //Update the shopping cart
@@ -176,7 +180,6 @@ app.controller('UserController', ['$http', function($http){
         password: this.password
       }
     }).then(function(response){
-      console.log(response);
       controller.username = null;
       controller.password = null;
       controller.openShop();
@@ -198,19 +201,22 @@ app.controller('UserController', ['$http', function($http){
   };
 
   //Gets the user's shopping cart
-  this.getShoppingCart = function(userID) {
+  this.getShoppingCart = function(userID, displayCartBool = false) {
     $http({
       method:`GET`,
       url:`/users/getCartContents/${userID}`
     }).then(function(response){
       //console.log(response);
       controller.userShoppingCart = response.data;
+      if(displayCartBool === true) {
+        controller.pageToDisplay = 3;
+      }
     }, function() {
       console.log('error');
     });
   };
 
-  this.addToCart = function(amountToAdd, itemID){
+  this.addToCart = function(amountToAdd, itemID, updateSubtotalBool = false){
     $http({
       method: `PUT`,
       url:`/users/addToCart/${controller.loggedInUserID}`,
@@ -221,6 +227,9 @@ app.controller('UserController', ['$http', function($http){
     }).then(function(response){
       console.log(`Item added?`);
       controller.getShoppingCart(controller.loggedInUserID);
+      if(updateSubtotalBool === true) {
+        controller.getSubTotal();
+      }
     }, function(){
       console.log(`Error in .addToCart in UserController`);
     });

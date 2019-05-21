@@ -61,12 +61,12 @@ app.use(`/sessions`, sessionController);
 
 //A route to access additional user functionality on the app once signed in. Returns the session's current user.
 app.get('/app', (req, res)=>{
-    if(req.session.currentUser){
-        res.json(req.session.currentUser);
-    } else {
-        res.status(401).json({
-          status:401,
-          message:'not logged in'
-        });
-    }
+  if(req.session.currentUser){
+    res.json(req.session.currentUser);
+  } else {
+    res.status(401).json({
+      status:401,
+      message:'not logged in'
+    });
+  }
 });
