@@ -44,9 +44,13 @@
     </form>
   </div>
   <div class="buttons" ng-if="userCtrl.loggedInUsername">
+
     <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
-    <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id)">Delete item</button>
+
+    <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
+
     <button class="product-details-btn" name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+
     <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(itemCtrl.temporaryItem._id)">
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>
