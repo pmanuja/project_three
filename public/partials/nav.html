@@ -1,12 +1,14 @@
 <div class="login">
   <ul ng-if="userCtrl.loggedInUsername">
-    <li>Welcome, {{userCtrl.loggedInUsername}}</li>
+    <li>Welcome, <span ng-if="userCtrl.userIsAdmin"> admin </span>{{userCtrl.loggedInUsername}}</li>
+
   </ul>
   <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
   <ul style="list-style-type: none;">
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">Home</a></li>
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">Shop</a></li>
     <li><a href="#" ng-click="userCtrl.getShoppingCart(userCtrl.loggedInUserID, true)" ng-if="(userCtrl.loggedInUsername)">View Cart</a></li>
+    <li><a href="#" ng-if="userCtrl.userIsAdmin" ng-click="userCtrl.pageToDisplay = 4">Add New Item</a></li>
   </ul>
   <h4 ng-if="(!userCtrl.loggedInUsername)">Log In</h4>
   <form class="log-in-user" ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">

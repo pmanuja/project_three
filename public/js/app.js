@@ -86,7 +86,7 @@ app.controller('ShopController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.items.unshift(response.data);
-      this.createNew = {};
+      controller.createNewItem = {};
     }, function(error) {
       console.log(error);
     });
