@@ -1,25 +1,26 @@
-<header>
+<!-- <header>
   <h1>bootcamp boutique.</h1>
-</header>
+</header> -->
 
 <div class="items-list">
+  <label for="Search by">
+	<input type='text' placeholder='Search All Products...' ng-model='searchBox' style="width:300px;">
+</label>
 
-  <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
-  <div class="adminOnly" ng-if="userCtrl.loggedInUsername">
-    <div class="new-item">
-      <form ng-submit="itemCtrl.createItem()">
-        <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
-        <input class="" type="text" ng-model="itemCtrl.createNewItem.price" placeholder="price" /><br>
-        <input class="" type="text" ng-model="itemCtrl.createNewItem.category" placeholder="category" /><br>
-        <input class="" type="text" ng-model="itemCtrl.createNewItem.description" placeholder="description" /><br>
-        <input class="" type="text" ng-model="itemCtrl.createNewItem.image" placeholder="image url" /><br>
-        <input type="submit" value="Add Item">
-      </form>
-    </div>
+
+
+  <div>
+    Sort Products by:
+    <input type="radio" name="order" value="price" ng-model='order' id="price-up"/>
+    <label for="price-up">Price Low to High</label>
+    <input type="radio" name="order" value="-price" ng-model='order'id="price-down"/>
+    <label for="price-down">Price High to Low</label>
+    <input type="radio" name="order" value="name" ng-model='order' id="product"/>
+    <label for="product-asc">Product Name</label>
   </div>
 
   <ul class="flexRow flexWrap widthFull">
-    <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items"> <h4>{{item.name}}</h4>
+    <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items | orderBy: order | filter: searchBox"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
 
       <br />

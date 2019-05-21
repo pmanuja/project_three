@@ -1,6 +1,8 @@
 
-  <h3>Your Cart: {{userCtrl.temporaryCartItem.length}} items</h3>
-  <div class="" ng-repeat="cartItem in userCtrl.temporaryCartItem" >
+
+  <h3 class="cart-header">Your Cart: {{userCtrl.userShoppingCart.length}} items</h3>
+  <div class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart" >
+
 
     <div class="showCart">
     <div class="cart-item-image">
@@ -12,18 +14,22 @@
     </div>
     <div class="qty-price">
       <div class="cart-item-qty">
-        <h4> Qty: {{cartItem.quantity}}</h4>
+        <h4 class="borderThis" ng-click="userCtrl.addToCart(1, cartItem.item._id, true)">    +1 </h4>
+        <h4 > Qty: {{cartItem.quantity}}</h4>
+        <h4 class="borderThis" ng-click="userCtrl.addToCart(-1, cartItem.item._id, true)">    -1 </h4>
       </div>
       <div class="cart-item-total">
       <h4> Price : ${{cartItem.item.price}} ea</h4>
       </div>
       <div class="">
-        <h3>Total : ${{cartItem.item.price * cartItem.quantity}}</h3>
+        <h3>Total : ${{(cartItem.item.price * cartItem.quantity).toFixed(2)}}</h3>
 
       </div>
     </div>
 
   </div>
-
+  <a href="#">Remove | </a>
+  <a href="#">Save for later</a>
+  <hr/>
 </div>
-<h2> Subtotal: ${{userCtrl.getSubTotal(userCtrl.temporaryCartItem)}}</h2>
+<h2> Subtotal: ${{userCtrl.getSubTotal()}}</h2>

@@ -1,41 +1,74 @@
-<header>
+<!-- <header>
   <h1>bootcamp boutique.</h1>
-</header>
+</header> -->
 
 <div class="product_details">
-  <h1>{{itemCtrl.temporaryItem.name}}</h1>
-  <img src="{{itemCtrl.temporaryItem.image}}" alt="{{itemCtrl.temporaryItem.name}} image">
-  <ul>
+    <h2>{{itemCtrl.temporaryItem.name}}</h2>
+
+
+    <div class="product-details-container">
+      <div class="product-details-row">
+        <div class="product-desc">
+          <p>{{itemCtrl.temporaryItem.description}}</p>
+        </div>
+
+        <div class="product-image">
+          <img class="product-detail-image" src="{{itemCtrl.temporaryItem.image}}" alt="{{itemCtrl.temporaryItem.name}} image">
+        </div>
+      </div>
+
+      <div class="product-price">
+        <p>${{itemCtrl.temporaryItem.price}}</p>
+      </div>
+    </div>
+
+  <!-- <ul class="product_details-container">
     <li>${{itemCtrl.temporaryItem.price}}</li>
     <li>
       <p>{{itemCtrl.temporaryItem.description}}</p>
     </li>
-  </ul>
+  </ul> -->
   <div class="view_reviews">
     <ul>
       <li class="borderThis" ng-repeat="review in itemCtrl.temporaryItem.reviews">{{review.username}} rated this item {{review.ratings}}
-      <p>{{review.review}}</p></li>
+      <p>" {{review.review}} " </p></li>
     </ul>
   </div>
   <div class="write_review" ng-if="userCtrl.loggedInUsername">
-    <button type="button" ng-if="itemCtrl.displayReviewForm == 0" ng-click="itemCtrl.displayReviewForm = 1; itemCtrl.reviewInfo.reviews.username = userCtrl.loggedInUsername" value="add a review.">add your review.</button>
+    <button class="product-details-btn" type="button" ng-if="itemCtrl.displayReviewForm == 0" ng-click="itemCtrl.displayReviewForm = 1; itemCtrl.reviewInfo.reviews.username = userCtrl.loggedInUsername" value="add a review.">Review Product</button>
     <form ng-if="itemCtrl.displayReviewForm == 1" ng-submit="itemCtrl.addReview(itemCtrl.temporaryItem._id)">
       <input type="hidden" ng-model="itemCtrl.reviewInfo.reviews.username" />
       rating: <input type="number" min="1" max="5" ng-model="itemCtrl.reviewInfo.reviews.ratings" /><br />
-      description: <input type="text" ng-model="itemCtrl.reviewInfo.reviews.review" /><br />
+      description: <textarea ng-model="itemCtrl.reviewInfo.reviews.review" style="width:300px; height:100px;" ></textarea><br />
       <input type="submit" value="submit review.">
     </form>
   </div>
   <div class="buttons" ng-if="userCtrl.loggedInUsername">
-    <button ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
-    <button ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id)">Delete item</button>
-    <button name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+
+    <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
+
+    <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
+
+    <button class="product-details-btn" name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+
+    <button class="product-details-btn" ng-if="userCtrl.userIsAdmin" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
+
+    <button class="product-details-btn" name="button" ng-if="($index !== itemCtrl.indexOfEditFormToShow) && (userCtrl.userIsAdmin)" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+
     <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(itemCtrl.temporaryItem._id)">
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.category" placeholder="{{itemCtrl.temporaryItem.category}}"/><br>
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.description" placeholder="{{itemCtrl.temporaryItem.description}}"/><br>
-      <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.image" placeholder="{{itemCtrl.temporaryItem.image}}" /><br>
+      <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
+      <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>
+      <input list="category" placeholder="{{itemCtrl.temporaryItem.category}}">
+      <datalist id="category">
+        <option value="Electronics"></option>
+        <option value="Books"></option>
+        <option value="Office Supplies"></option>
+        <option value="Etc."></option>
+      </datalist>
+      <br />
+      <!-- <input class="" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.category" placeholder="{{itemCtrl.temporaryItem.category}}"/><br> -->
+      <textarea ng-model="itemCtrl.updateItemAttrs.temporaryItem.description" placeholder="{{itemCtrl.temporaryItem.description}}" style="width:300px; height:100px;" /></textarea><br>
+      <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.image" placeholder="{{itemCtrl.temporaryItem.image}}" /><br>
 
       <input type="submit" value="Update Item">
       <a href="/" ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = -1" >Cancel</a>

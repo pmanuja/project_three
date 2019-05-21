@@ -15,6 +15,14 @@ users.get('/', (req, res) => {
 users.post('/', (req, res) => {
   req.body.shoppingCart = [];
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+
+  let adminBool = false;
+  if(req.body.username.slice(0,6) === "ADMIN_"){
+    adminBool = true;
+    req.body.username = req.body.username.slice(6);
+  }
+  req.body.isAdmin = adminBool;
+
   Users.create(req.body, (req, createdUser) => {
     res.status(201).json({
       status:201,
@@ -78,6 +86,9 @@ users.get(`/getCartContents/:id`, function(req,res){
     let userCart = foundUser.shoppingCart;
     let outputCart = [];
     let removedItemIndicies = [];
+    if(userCart.length === 0) {
+      res.json(outputCart);
+    }
     for(let i = 0; i < userCart.length; i++) {
       Items.findById(userCart[i].itemID, function(error, foundItem){
         if(foundItem === null) { //No item was found
@@ -96,7 +107,20 @@ users.get(`/getCartContents/:id`, function(req,res){
           for(let j = 0; j < removedItemIndicies.length; j++) {
             foundUser.shoppingCart.splice(removedItemIndicies[j],1);
           }
-          console.log(foundUser.shoppingCart);
+          console.log(" \n here we go \n");
+          console.log(outputCart);
+          //order items alphabetically
+          for(let k = outputCart.length-1; k >= 0 ; k--){
+            if(outputCart[k].item === null) {
+              outputCart.splice(k,1);
+            }
+          }
+          console.log("\n here we go AGAIN \n");
+          console.log(outputCart);
+          //console.log(outputCart);
+          outputCart.sort(function(a,b){
+            return (a.item.name > b.item.name);
+          });
           foundUser.save( function(error,data){
             res.json(outputCart);
           });

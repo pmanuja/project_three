@@ -1,11 +1,136 @@
-
-
 /* temporary styles for debugging */
 .borderThis{
   border: 1px solid black;
 }
 
-/* End temp. styles */
+
+body{
+  /* width: 900px; */
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 50px 48px 0;
+  line-height: 1;
+  color: #333;
+  background: #FFF;
+  font-family: ff-tisa-web-pro, Georgia, sans-serif;
+  text-align: center;
+}
+
+body h1{
+  font-family: 'Permanent Marker', cursive;
+  color: #34AC98;
+}
+
+.welcome-div{
+  width: 100%;
+  height: 100%;
+  background-color:white;
+  color: black;
+  text-align:justify;
+
+}
+.welcome-div p{
+  font-size: .875em;
+  line-height: 1.45em;
+
+}
+
+nav{
+  position: absolute;
+  top: 158px;
+  left: 0;
+  width: 160px;
+}
+nav a{
+  text-decoration: none;
+  color: #34AC98;
+  display: block;
+  height: 28px;
+  /* padding: 4px 0 0 44px; */
+  padding: 0;
+  font-style: italic;
+  transition: all .2s ease;
+  cursor: pointer;
+  font-size: 20px;
+}
+nav ul{
+  list-style: none;
+}
+
+nav li {
+    display: block;
+    margin-bottom: 18px;
+    line-height: 1.3em;
+    list-style: none;
+    font-size: 100%;
+    font-weight:bolder;
+    margin: auto;
+}
+
+nav a:hover{
+  color:indianred;
+}
+
+.home-image{
+  display: block;
+  width:100%;
+  height: 760px;
+}
+.enter-boutique{
+  top: 585px;
+  padding: 10px 24px 15px;
+  color: #222;
+  background: #FFF;
+  font-size: 1.5em;
+  position: absolute;
+  right:auto;
+  left: auto;
+  font-style: italic;
+  cursor: pointer;
+}
+.boutique-header{
+  top: 620px;
+  padding: 10px 24px 15px;
+  color: #222;
+  background: #FFF;
+  font-size: 1em;
+  position: absolute;
+  right:auto;
+  left: auto;
+  font-style: italic;
+
+}
+.footer{
+  clear:both;
+  position: relative;
+  min-height: 70px;
+  padding-top: 20px;
+  border-top: 2px solid #E5E5E5;
+  color: #AAA;
+
+}
+/* .new-user-form{
+  margin-top: 110px;
+} */
+
+.text-box{
+  height:30px;
+  width: 175px;
+  margin: 5px;
+  border-radius: .1em;
+  text-align: center;
+}
+
+input[type="submit"]{
+  background-color: #34AC98;
+  height:20px;
+  margin: 5px;
+  border-radius: 5px;
+  border:1px solid black;
+  text-align: center;
+
+}
 
 body {
   text-align: center;
@@ -20,6 +145,7 @@ ul {
   padding: 0;
 }
 
+
 .flexColumn{
   display: flex;
   flex-direction: column;
@@ -30,6 +156,7 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items:flex-start;
 }
 
 .flexWrap{
@@ -56,7 +183,7 @@ ul {
 }
 
 .widthFull{
-  width: 100%;
+  width: 80%;
 }
 
 .sticky{
@@ -67,31 +194,109 @@ ul {
 
 .modal-textbox {
   background-color: khaki;
-	height: 350px;
-	width: 450px;
-	border-radius: 2px;
-	margin: auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  height: 350px;
+  width: 450px;
+  border-radius: 2px;
+  margin: auto;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 #close{
   margin-right: 0px;
 }
 .showCart{
   display: flex;
-  justify-content: flex-start;
+  justify-content:space-around;
+
+}
+.cart-header{
+  font-size: 1.5rem;
+  margin-top: 24px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  text-align: left;
+  margin: 16px 0 0;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+hr{
+  width:90%;
 }
 
 .showCart img{
   display: block;
-  width: 200px;
+  width: 100px;
   hieght: 200px;
+  border-color: lightgrey;
 }
 
 .showCart p{
   width: 400px;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: .8rem;
+  cursor: default;
 
 }
-.qty-price{
+.qty-price > h4{
   display: flex;
   flex-direction: column;
+  font-size: .8rem;
+  line-height: .75rem;
+  cursor: default;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 400;
+}
+
+.product-details-btn{
+  width:100px;
+  background-color:gold;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  border-radius: 3px;
+  border: none;
+  border-right-style:inset;
+  margin: 2px;
+  padding: 5px;
+}
+
+.li-images{
+  /* display: block; */
+  width: 40%;
+  height:150px;
+}
+
+.product_details > h2{
+  text-align: left;
+  margin-left: 150px;
+}
+.product-detail-image{
+  display: inline;
+  margin-left:0;
+  width:600px;
+  height: 450px;
+
+
+}
+
+.product-details-container {
+  display: flex;
+  justify-content:space-between;
+}
+.product-details-row{
+  width:60%;
+  padding-left: 200px;
+
+}
+
+.product-desc > p{
+text-align: left;
+/* font-size: 18px; */
+font-size: 1em;
+font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 400;
+padding: 10px 24px 15px;
+}
+
+.product-price>p{
+  font-size: 20px;
+  margin-right: 20px;
 }
