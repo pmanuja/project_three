@@ -1,5 +1,7 @@
 
-  <h3>Your Cart: {{userCtrl.temporaryCartItem.length}} items</h3>
+  <h3 class="cart-header">Your Cart: {{userCtrl.temporaryCartItem.length}} items</h3>
+  <br/>
+  <br/>
   <div class="" ng-repeat="cartItem in userCtrl.temporaryCartItem" >
 
     <div class="showCart">
@@ -24,6 +26,8 @@
     </div>
 
   </div>
-
+  <a href="#">Remove | </a>
+  <a href="#">Save for later</a>
+  <hr/>
 </div>
 <h2> Subtotal: ${{userCtrl.getSubTotal(userCtrl.temporaryCartItem)}}</h2>

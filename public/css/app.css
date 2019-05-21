@@ -201,20 +201,42 @@ ul {
 }
 .showCart{
   display: flex;
-  justify-content: flex-start;
+  justify-content:space-around;
+
+}
+.cart-header{
+  font-size: 1.5rem;
+  margin-top: 24px;
+  font-weight: 400;
+  letter-spacing: -.02em;
+  text-align: left;
+  margin: 16px 0 0;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+hr{
+  width:90%;
 }
 
 .showCart img{
   display: block;
-  width: 200px;
+  width: 100px;
   hieght: 200px;
+  border-color: lightgrey;
 }
 
 .showCart p{
   width: 400px;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: .8rem;
+  cursor: default;
 
 }
-.qty-price{
+.qty-price > h4{
   display: flex;
   flex-direction: column;
+  font-size: .8rem;
+  line-height: .75rem;
+  cursor: default;
+  font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 400;
 }
