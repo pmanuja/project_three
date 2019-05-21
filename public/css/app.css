@@ -19,7 +19,7 @@ body{
 
 body h1{
   font-family: 'Permanent Marker', cursive;
-    color: #34AC98;
+  color: #34AC98;
 }
 
 .welcome-div{
@@ -54,16 +54,16 @@ nav a{
   font-size: 20px;
 }
 nav ul{
-   list-style: none;
+  list-style: none;
 }
 
 nav li {
-    display: block;
-    margin-bottom: 18px;
-    line-height: 1.3em;
-    list-style: none;
-    font-size: 100%;
-    font-weight:bolder;
+  display: block;
+  margin-bottom: 18px;
+  line-height: 1.3em;
+  list-style: none;
+  font-size: 100%;
+  font-weight:bolder;
 }
 
 nav a:hover{
@@ -190,11 +190,11 @@ ul {
 
 .modal-textbox {
   background-color: khaki;
-	height: 350px;
-	width: 450px;
-	border-radius: 2px;
-	margin: auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  height: 350px;
+  width: 450px;
+  border-radius: 2px;
+  margin: auto;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 #close{
   margin-right: 0px;
