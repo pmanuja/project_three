@@ -47,10 +47,6 @@
 
     <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
 
-    <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
-
-    <button class="product-details-btn" name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
-
     <button class="product-details-btn" ng-if="userCtrl.userIsAdmin" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
 
     <button class="product-details-btn" name="button" ng-if="($index !== itemCtrl.indexOfEditFormToShow) && (userCtrl.userIsAdmin)" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>

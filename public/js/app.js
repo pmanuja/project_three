@@ -144,6 +144,7 @@ app.controller('UserController', ['$http', function($http){
       if(controller.loggedInUsername){ //Update the shopping cart
         controller.getShoppingCart(controller.loggedInUserID);
       }
+      console.log(controller.userIsAdmin);
     }, function(){
       console.log('error');
       if(controller.loggedInUsername === undefined){
