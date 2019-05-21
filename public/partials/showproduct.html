@@ -44,27 +44,17 @@
     </form>
   </div>
   <div class="buttons" ng-if="userCtrl.loggedInUsername">
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> 13e22d3771bc39a346a78d506e11e0dd860b10f9
     <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
 
     <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
 
     <button class="product-details-btn" name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
-<<<<<<< HEAD
-=======
-    <button ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
 
-    <button ng-if="userCtrl.userIsAdmin" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
+    <button class="product-details-btn" ng-if="userCtrl.userIsAdmin" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
 
-    <button name="button" ng-if="($index !== itemCtrl.indexOfEditFormToShow) && (userCtrl.userIsAdmin)" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
->>>>>>> 02c76fa64d753c1944f6eb1b6ea4c47803b2aaff
-=======
+    <button class="product-details-btn" name="button" ng-if="($index !== itemCtrl.indexOfEditFormToShow) && (userCtrl.userIsAdmin)" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
 
->>>>>>> 13e22d3771bc39a346a78d506e11e0dd860b10f9
     <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(itemCtrl.temporaryItem._id)">
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>
