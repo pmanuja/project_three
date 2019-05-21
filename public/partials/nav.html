@@ -13,13 +13,16 @@
 </ul> -->
 
 <div class="login">
-  <ul>
+
+  <ul style="list-style-type: none;">
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">Home</a></li>
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">Shop</a></li>
-    <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">Log In</a></li>
+    <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
+    <li><a href="#" ng-click="userCtrl.getShoppingCart(userCtrl.loggedInUserID, true)" ng-if="(userCtrl.loggedInUsername)">View Cart</a></li>
+
   </ul>
   <ul ng-if="userCtrl.loggedInUsername">
-    <li>welcome, {{userCtrl.loggedInUsername}}</li>
+    <li>Welcome, {{userCtrl.loggedInUsername}}</li>
   </ul>
     <form class="new-user-form" ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
       <input class="text-box" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
@@ -44,5 +47,5 @@
 
 
     </ul>
-      <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button>
+      <!-- <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button> -->
 </div>

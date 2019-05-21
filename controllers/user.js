@@ -78,6 +78,9 @@ users.get(`/getCartContents/:id`, function(req,res){
     let userCart = foundUser.shoppingCart;
     let outputCart = [];
     let removedItemIndicies = [];
+    if(userCart.length === 0) {
+      res.json(outputCart);
+    }
     for(let i = 0; i < userCart.length; i++) {
       Items.findById(userCart[i].itemID, function(error, foundItem){
         if(foundItem === null) { //No item was found
@@ -96,7 +99,16 @@ users.get(`/getCartContents/:id`, function(req,res){
           for(let j = 0; j < removedItemIndicies.length; j++) {
             foundUser.shoppingCart.splice(removedItemIndicies[j],1);
           }
-          console.log(foundUser.shoppingCart);
+          //order items alphabetically
+          for(let k = 0; k < outputCart.length; k++){
+            if(outputCart[k].item === null) {
+              outputCart.splice(k,1);
+            }
+          }
+          //console.log(outputCart);
+          outputCart.sort(function(a,b){
+            return (a.item.name > b.item.name);
+          });
           foundUser.save( function(error,data){
             res.json(outputCart);
           });
