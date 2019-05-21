@@ -1,11 +1,132 @@
-
-
 /* temporary styles for debugging */
 .borderThis{
   border: 1px solid black;
 }
 
-/* End temp. styles */
+
+body{
+  /* width: 900px; */
+  height: 100%;
+  min-height: 100%;
+  margin: 0 auto;
+  padding: 50px 48px 0;
+  line-height: 1;
+  color: #333;
+  background: #FFF;
+  font-family: ff-tisa-web-pro, Georgia, sans-serif;
+  text-align: center;
+}
+
+body h1{
+  font-family: 'Permanent Marker', cursive;
+    color: #34AC98;
+}
+
+.welcome-div{
+  width: 100%;
+  height: 100%;
+  background-color:white;
+  color: black;
+  text-align:justify;
+
+}
+.welcome-div p{
+  font-size: .875em;
+  line-height: 1.45em;
+
+}
+
+nav{
+  position: absolute;
+  top: 158px;
+  left: 0;
+  width: 160px;
+}
+nav a{
+  text-decoration: none;
+  color: #34AC98;
+  display: block;
+  height: 28px;
+  padding: 4px 0 0 44px;
+  font-style: italic;
+  transition: all .2s ease;
+  cursor: pointer;
+  font-size: 20px;
+}
+nav ul{
+   list-style: none;
+}
+
+nav li {
+    display: block;
+    margin-bottom: 18px;
+    line-height: 1.3em;
+    list-style: none;
+    font-size: 100%;
+    font-weight:bolder;
+}
+
+nav a:hover{
+  color:indianred;
+}
+
+.home-image{
+  display: block;
+  width:100%;
+  height: 760px;
+}
+.enter-boutique{
+  top: 585px;
+  padding: 10px 24px 15px;
+  color: #222;
+  background: #FFF;
+  font-size: 1.5em;
+  position: absolute;
+  right:auto;
+  left: auto;
+  font-style: italic;
+  cursor: pointer;
+}
+.boutique-header{
+  top: 620px;
+  padding: 10px 24px 15px;
+  color: #222;
+  background: #FFF;
+  font-size: 1em;
+  position: absolute;
+  right:auto;
+  left: auto;
+  font-style: italic;
+
+}
+.footer{
+  clear:both;
+  position: relative;
+  min-height: 70px;
+  padding-top: 20px;
+  border-top: 2px solid #E5E5E5;
+  color: #AAA;
+
+}
+.new-user-form{
+  margin-top: 110px;
+}
+
+.text-box{
+  height:20px;
+  margin: 5px;
+  border-radius: .1em;
+  text-align: center;
+}
+input[type="submit"]{
+  background-color: #34AC98;
+  height:20px;
+  margin: 5px;
+  border-radius: 5px;
+  border:1px solid black;
+  text-align: center;
+
+}
 
 body {
   text-align: center;
@@ -20,6 +141,7 @@ ul {
   padding: 0;
 }
 
+
 .flexColumn{
   display: flex;
   flex-direction: column;
@@ -30,6 +152,7 @@ ul {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-items:flex-start;
 }
 
 .flexWrap{
