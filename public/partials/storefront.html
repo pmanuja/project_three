@@ -1,11 +1,14 @@
-<header>
+<!-- <header>
   <h1>bootcamp boutique.</h1>
-</header>
+</header> -->
 
 <div class="items-list">
+  <label for="Search by">
+	<input type='text' placeholder='Product name' ng-model='searchBox'>
+</label>
 
   <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
-  <div class="adminOnly" ng-if="userCtrl.userIsAdmin">
+  <div class="adminOnly" ng-if="userCtrl.loggedInUsername">
     <div class="new-item">
       <form ng-submit="itemCtrl.createItem()">
         <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
@@ -28,7 +31,7 @@
 
 
   <ul class="flexRow flexWrap widthFull">
-    <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items"> <h4>{{item.name}}</h4>
+    <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items | filter: searchBox"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
 
       <br />
