@@ -24,7 +24,7 @@
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
 
       <br />
-      <button ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item">View Details</button>
+      <button class="product-details-btn" ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item">View Details</button>
       <!-- <div ng-if="itemCtrl.showModal && $index === itemCtrl.itemIndex" id="modal">
 
         <div ng-include="'partials/showproduct.html'"></div>
@@ -43,7 +43,7 @@
       <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
       <div class="adminOnly">
 
-        <button ng-click="userCtrl.addToCart(1, item._id)"> Add to cart </button>
+        <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)"> Add to cart </button>
 
       <!-- delete button for each item -->
         <!-- <button ng-click="itemCtrl.deleteItem(item._id)">Delete</button> -->
