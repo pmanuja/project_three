@@ -8,7 +8,7 @@
 </label>
 
   <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
-  <div class="adminOnly" ng-if="userCtrl.loggedInUsername">
+  <div class="adminOnly" ng-if="userCtrl.userIsAdmin">
     <div class="new-item">
       <form ng-submit="itemCtrl.createItem()">
         <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
