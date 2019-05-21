@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //Change the secret to an environmental variable, eventually
 app.use(session({
-    secret:'feedmeseymour',
-    resave: false,
-    saveUninitialized: false
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
 }));
 
 // connect controllers
@@ -61,12 +61,12 @@ app.use(`/sessions`, sessionController);
 
 //A route to access additional user functionality on the app once signed in. Returns the session's current user.
 app.get('/app', (req, res)=>{
-    if(req.session.currentUser){
-        res.json(req.session.currentUser);
-    } else {
-        res.status(401).json({
-          status:401,
-          message:'not logged in'
-        });
-    }
+  if(req.session.currentUser){
+    res.json(req.session.currentUser);
+  } else {
+    res.status(401).json({
+      status:401,
+      message:'not logged in'
+    });
+  }
 });

@@ -39,14 +39,22 @@
     <form ng-if="itemCtrl.displayReviewForm == 1" ng-submit="itemCtrl.addReview(itemCtrl.temporaryItem._id)">
       <input type="hidden" ng-model="itemCtrl.reviewInfo.reviews.username" />
       rating: <input type="number" min="1" max="5" ng-model="itemCtrl.reviewInfo.reviews.ratings" /><br />
-      description: <textarea ng-model="itemCtrl.reviewInfo.reviews.review" style="width:300px; height:100px;" /></textarea><br />
+      description: <textarea ng-model="itemCtrl.reviewInfo.reviews.review" style="width:300px; height:100px;" ></textarea><br />
       <input type="submit" value="submit review.">
     </form>
   </div>
   <div class="buttons" ng-if="userCtrl.loggedInUsername">
+<<<<<<< HEAD
     <button class="product-details-btn" ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
     <button class="product-details-btn" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id)">Delete item</button>
     <button class="product-details-btn" name="button" ng-if="$index !== itemCtrl.indexOfEditFormToShow" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+=======
+    <button ng-click="userCtrl.addToCart(1, item._id)">Add to cart</button>
+
+    <button ng-if="userCtrl.userIsAdmin" ng-click="itemCtrl.deleteItem(itemCtrl.temporaryItem._id); userCtrl.pageToDisplay = 1; itemCtrl.indexOfEditFormToShow = -1">Delete item</button>
+
+    <button name="button" ng-if="($index !== itemCtrl.indexOfEditFormToShow) && (userCtrl.userIsAdmin)" ng-click="itemCtrl.indexOfEditFormToShow = $index">Edit item</button>
+>>>>>>> 02c76fa64d753c1944f6eb1b6ea4c47803b2aaff
     <form ng-if="$index === itemCtrl.indexOfEditFormToShow" ng-submit="itemCtrl.updateItem(itemCtrl.temporaryItem._id)">
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.name" placeholder="{{itemCtrl.temporaryItem.name}}"/><br>
       <input class="text-box" type="text" ng-model="itemCtrl.updateItemAttrs.temporaryItem.price"  placeholder="{{itemCtrl.temporaryItem.price}}"/><br>

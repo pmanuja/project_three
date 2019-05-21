@@ -1,7 +1,7 @@
 /* temporary styles for debugging */
-/* .borderThis{
+.borderThis{
   border: 1px solid black;
-} */
+}
 
 
 body{
@@ -19,7 +19,7 @@ body{
 
 body h1{
   font-family: 'Permanent Marker', cursive;
-    color: #34AC98;
+  color: #34AC98;
 }
 
 .welcome-div{
@@ -47,14 +47,15 @@ nav a{
   color: #34AC98;
   display: block;
   height: 28px;
-  padding: 4px 0 0 44px;
+  /* padding: 4px 0 0 44px; */
+  padding: 0;
   font-style: italic;
   transition: all .2s ease;
   cursor: pointer;
   font-size: 20px;
 }
 nav ul{
-   list-style: none;
+  list-style: none;
 }
 
 nav li {
@@ -64,6 +65,7 @@ nav li {
     list-style: none;
     font-size: 100%;
     font-weight:bolder;
+    margin: auto;
 }
 
 nav a:hover{
@@ -108,9 +110,9 @@ nav a:hover{
   color: #AAA;
 
 }
-.new-user-form{
+/* .new-user-form{
   margin-top: 110px;
-}
+} */
 
 .text-box{
   height:30px;
@@ -192,11 +194,11 @@ ul {
 
 .modal-textbox {
   background-color: khaki;
-	height: 350px;
-	width: 450px;
-	border-radius: 2px;
-	margin: auto;
-	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  height: 350px;
+  width: 450px;
+  border-radius: 2px;
+  margin: auto;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
 #close{
   margin-right: 0px;
