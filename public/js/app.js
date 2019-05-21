@@ -152,20 +152,20 @@ app.controller('UserController', ['$http', function($http){
   };
 
   this.createUser = function(){
+
     $http({
       method:'POST',
       url: '/users',
       data: {
         username: this.createUsername,
         password: this.createPassword,
-        email: this.createEmail
+        email: this.createEmail,
       }
     }).then(function(response){
       console.log(response);
       controller.createUsername = null;
       controller.createPassword = null;
       controller.createEmail = null;
-
     }, function(error){
       console.log('error');
     });

@@ -1,7 +1,7 @@
 /* temporary styles for debugging */
-/* .borderThis{
+.borderThis{
   border: 1px solid black;
-} */
+}
 
 
 body{
@@ -59,14 +59,6 @@ nav ul{
 }
 
 nav li {
-<<<<<<< HEAD
-  display: block;
-  margin-bottom: 18px;
-  line-height: 1.3em;
-  list-style: none;
-  font-size: 100%;
-  font-weight:bolder;
-=======
     display: block;
     margin-bottom: 18px;
     line-height: 1.3em;
@@ -74,7 +66,6 @@ nav li {
     font-size: 100%;
     font-weight:bolder;
     margin: auto;
->>>>>>> a7f664f532c2c5fb016aa464221271d3b621dd7f
 }
 
 nav a:hover{
