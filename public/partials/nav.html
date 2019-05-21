@@ -13,25 +13,30 @@
 </ul> -->
 
 <div class="login">
+
   <ul style="list-style-type: none;">
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">Home</a></li>
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">Shop</a></li>
     <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
     <li><a href="#" ng-click="userCtrl.getShoppingCart(userCtrl.loggedInUserID, true)" ng-if="(userCtrl.loggedInUsername)">View Cart</a></li>
+
   </ul>
   <ul ng-if="userCtrl.loggedInUsername">
     <li>Welcome, {{userCtrl.loggedInUsername}}</li>
   </ul>
-    <form ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
-      <input class="" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
-      <input class="" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
-      <input class="" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
-      <input type="submit" value="create new user">
+    <form class="new-user-form" ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="text-box" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
+      <input class="text-box" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
+      <input class="text-box" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
+      <input type="submit" value="SignUp">
     </form>
-    <form ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
-      <input class="" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
-      <input class="" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
-      <input type="submit" value="log in">
+    <br/>
+    <br/>
+    <br/>
+    <form class="log-in-user" ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
+      <input class="text-box" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
+      <input class="text-box" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
+      <input type="submit" value="LogIn">
     </form>
     <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
 
