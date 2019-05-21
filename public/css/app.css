@@ -1,7 +1,7 @@
 /* temporary styles for debugging */
-.borderThis{
+/* .borderThis{
   border: 1px solid black;
-}
+} */
 
 
 body{
@@ -113,7 +113,8 @@ nav a:hover{
 }
 
 .text-box{
-  height:20px;
+  height:30px;
+  width: 175px;
   margin: 5px;
   border-radius: .1em;
   text-align: center;
@@ -179,7 +180,7 @@ ul {
 }
 
 .widthFull{
-  width: 100%;
+  width: 80%;
 }
 
 .sticky{
@@ -239,4 +240,23 @@ hr{
   cursor: default;
   font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-weight: 400;
+}
+
+.product-details-btn{
+  width:100px;
+  background-color:gold;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  border-radius: 3px;
+  border: none;
+  border-right-style:inset;
+  margin: 2px;
+  padding: 5px;
+}
+
+.li-images{
+  /* display: block; */
+  width: 40%;
+  height:150px;
 }
