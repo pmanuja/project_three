@@ -47,7 +47,8 @@ nav a{
   color: #34AC98;
   display: block;
   height: 28px;
-  padding: 4px 0 0 44px;
+  /* padding: 4px 0 0 44px; */
+  padding: 0;
   font-style: italic;
   transition: all .2s ease;
   cursor: pointer;
@@ -64,6 +65,7 @@ nav li {
     list-style: none;
     font-size: 100%;
     font-weight:bolder;
+    margin: auto;
 }
 
 nav a:hover{
@@ -108,9 +110,9 @@ nav a:hover{
   color: #AAA;
 
 }
-.new-user-form{
+/* .new-user-form{
   margin-top: 110px;
-}
+} */
 
 .text-box{
   height:30px;
