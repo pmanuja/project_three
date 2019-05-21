@@ -15,6 +15,14 @@ users.get('/', (req, res) => {
 users.post('/', (req, res) => {
   req.body.shoppingCart = [];
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+
+  let adminBool = false;
+  if(req.body.username.slice(0,6) === "ADMIN_"){
+    adminBool = true;
+    req.body.username = req.body.username.slice(6);
+  }
+  req.body.isAdmin = adminBool;
+  
   Users.create(req.body, (req, createdUser) => {
     res.status(201).json({
       status:201,

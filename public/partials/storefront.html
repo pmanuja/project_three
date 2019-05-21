@@ -5,7 +5,7 @@
 <div class="items-list">
 
   <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
-  <div class="adminOnly" ng-if="userCtrl.loggedInUsername">
+  <div class="adminOnly" ng-if="userCtrl.userIsAdmin">
     <div class="new-item">
       <form ng-submit="itemCtrl.createItem()">
         <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
@@ -25,7 +25,7 @@
       </form>
     </div>
   </div>
-  
+
 
   <ul class="flexRow flexWrap widthFull">
     <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items"> <h4>{{item.name}}</h4>

@@ -14,9 +14,9 @@ app.use(express.urlencoded({ extended: false }));
 
 //Change the secret to an environmental variable, eventually
 app.use(session({
-    secret:'feedmeseymour',
-    resave: false,
-    saveUninitialized: false
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: false
 }));
 
 // connect controllers
