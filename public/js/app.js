@@ -199,6 +199,7 @@ app.controller('UserController', ['$http', function($http){
       controller.loggedInUsername = null;
       controller.loggedInUserID = null;
       controller.userShoppingCart = [];
+      controller.userIsAdmin = false;
     }, function(){
       console.log('error');
     });
