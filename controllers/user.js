@@ -78,6 +78,9 @@ users.get(`/getCartContents/:id`, function(req,res){
     let userCart = foundUser.shoppingCart;
     let outputCart = [];
     let removedItemIndicies = [];
+    if(userCart.length === 0) {
+      res.json(outputCart);
+    }
     for(let i = 0; i < userCart.length; i++) {
       Items.findById(userCart[i].itemID, function(error, foundItem){
         if(foundItem === null) { //No item was found

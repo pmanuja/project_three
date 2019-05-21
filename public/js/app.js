@@ -194,7 +194,10 @@ app.controller('UserController', ['$http', function($http){
       url:'/sessions'
     }).then(function(response){
       console.log(response);
+      //Clear all user-specific data!
       controller.loggedInUsername = null;
+      controller.loggedInUserID = null;
+      controller.userShoppingCart = [];
     }, function(){
       console.log('error');
     });
@@ -206,7 +209,6 @@ app.controller('UserController', ['$http', function($http){
       method:`GET`,
       url:`/users/getCartContents/${userID}`
     }).then(function(response){
-      //console.log(response);
       controller.userShoppingCart = response.data;
       if(displayCartBool === true) {
         controller.pageToDisplay = 3;
@@ -225,7 +227,6 @@ app.controller('UserController', ['$http', function($http){
         quantity: amountToAdd,
       },
     }).then(function(response){
-      console.log(`Item added?`);
       controller.getShoppingCart(controller.loggedInUserID);
       if(updateSubtotalBool === true) {
         controller.getSubTotal();
