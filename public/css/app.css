@@ -119,6 +119,7 @@ nav a:hover{
   border-radius: .1em;
   text-align: center;
 }
+
 input[type="submit"]{
   background-color: #34AC98;
   height:20px;
@@ -259,4 +260,41 @@ hr{
   /* display: block; */
   width: 40%;
   height:150px;
+}
+
+.product_details > h2{
+  text-align: left;
+  margin-left: 150px;
+}
+.product-detail-image{
+  display: inline;
+  margin-left:0;
+  width:600px;
+  height: 450px;
+
+
+}
+
+.product-details-container {
+  display: flex;
+  justify-content:space-between;
+}
+.product-details-row{
+  width:60%;
+  padding-left: 200px;
+
+}
+
+.product-desc > p{
+text-align: left;
+/* font-size: 18px; */
+font-size: 1em;
+font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
+font-weight: 400;
+padding: 10px 24px 15px;
+}
+
+.product-price>p{
+  font-size: 20px;
+  margin-right: 20px;
 }
