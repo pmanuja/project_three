@@ -86,7 +86,7 @@ app.controller('ShopController', ['$http', function($http){
     }).then(function(response){
       console.log(response);
       controller.items.unshift(response.data);
-      this.createNew = {};
+      controller.createNewItem = {};
     }, function(error) {
       console.log(error);
     });
@@ -139,7 +139,8 @@ app.controller('UserController', ['$http', function($http){
       url: '/app'
     }).then(function(response){
       controller.loggedInUsername = response.data.username;
-      controller.loggedInUserID = response.data._id
+      controller.loggedInUserID = response.data._id;
+      controller.userIsAdmin = response.data.isAdmin;
       if(controller.loggedInUsername){ //Update the shopping cart
         controller.getShoppingCart(controller.loggedInUserID);
       }
@@ -152,20 +153,20 @@ app.controller('UserController', ['$http', function($http){
   };
 
   this.createUser = function(){
+
     $http({
       method:'POST',
       url: '/users',
       data: {
         username: this.createUsername,
         password: this.createPassword,
-        email: this.createEmail
+        email: this.createEmail,
       }
     }).then(function(response){
       console.log(response);
       controller.createUsername = null;
       controller.createPassword = null;
       controller.createEmail = null;
-
     }, function(error){
       console.log('error');
     });
@@ -198,6 +199,7 @@ app.controller('UserController', ['$http', function($http){
       controller.loggedInUsername = null;
       controller.loggedInUserID = null;
       controller.userShoppingCart = [];
+      controller.userIsAdmin = false;
     }, function(){
       console.log('error');
     });

@@ -1,51 +1,35 @@
-<!-- <h5><a href="#" target="_blank">home</a></h5>
-<h5><a href="#" target="_blank">shop</a></h5>
-<h5><a href="#" target="_blank">my shopping cart</a></h5>
-<h5><a href="#" target="_blank">log-in</a></h5>
-<h5><a href="#" target="_blank">log-out</a></h5> -->
-
-<!-- <ul class="nav" style="list-style-type: none;">
-  <li><a href="#" target="_blank">home</a></li>
-  <li><a href="#" target="_blank">shop</a></li>
-  <li><a href="#" target="_blank">my shopping cart</a></li>
-  <li><a href="#" target="_blank">log-in</a></li>
-  <li><a href="#" target="_blank">log-out</a></li>
-</ul> -->
-
 <div class="login">
+  <ul ng-if="userCtrl.loggedInUsername">
+    <li>Welcome, <span ng-if="userCtrl.userIsAdmin"> admin </span>{{userCtrl.loggedInUsername}}</li>
 
+  </ul>
+  <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
   <ul style="list-style-type: none;">
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 0">Home</a></li>
     <li><a href="#" ng-click="userCtrl.pageToDisplay = 1">Shop</a></li>
-    <li><a href="#" ng-if="(!userCtrl.loggedInUsername)">log in</a></li>
     <li><a href="#" ng-click="userCtrl.getShoppingCart(userCtrl.loggedInUserID, true)" ng-if="(userCtrl.loggedInUsername)">View Cart</a></li>
-
+    <li><a href="#" ng-if="userCtrl.userIsAdmin" ng-click="userCtrl.pageToDisplay = 4">Add New Item</a></li>
   </ul>
-  <ul ng-if="userCtrl.loggedInUsername">
-    <li>Welcome, {{userCtrl.loggedInUsername}}</li>
-  </ul>
-    <form class="new-user-form" ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
-      <input class="text-box" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
-      <input class="text-box" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
-      <input class="text-box" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
-      <input type="submit" value="SignUp">
-    </form>
-    <br/>
-    <br/>
-    <br/>
-    <form class="log-in-user" ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
-      <input class="text-box" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
-      <input class="text-box" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
-      <input type="submit" value="LogIn">
-    </form>
-    <button ng-click="userCtrl.logOut()" ng-if="userCtrl.loggedInUsername"> log out </button>
-
-    <!-- Used to display shopping cart contents. Temporary - this is more of a test than final code -->
-    <ul class="borderThis" ng-if="userCtrl.loggedInUsername">
-      <li class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart">
+  <h4 ng-if="(!userCtrl.loggedInUsername)">Log In</h4>
+  <form class="log-in-user" ng-submit="userCtrl.logIn()" ng-if="(!userCtrl.loggedInUsername)">
+    <input class="text-box" type="text" ng-model="userCtrl.username" placeholder="Username" /><br>
+    <input class="text-box" type="password" ng-model="userCtrl.password" placeholder="Password" /><br>
+    <input type="submit" value="-->">
+  </form>
+  <h4 ng-if="(!userCtrl.loggedInUsername)">Sign Up</h4>
+  <form class="new-user-form" ng-submit="userCtrl.createUser()" ng-if="(!userCtrl.loggedInUsername)">
+    <input class="text-box" type="text" ng-model="userCtrl.createUsername" placeholder="Username" /><br>
+    <input class="text-box" type="password" ng-model="userCtrl.createPassword" placeholder="Password" /><br>
+    <input class="text-box" type="email" ng-model="userCtrl.createEmail" placeholder="email" /><br>
+    <input type="submit" value="-->">
+  </form>
+  <br/>
+  <br/>
+  <!-- Used to display shopping cart contents. Temporary - this is more of a test than final code -->
+  <h5 ng-if="userCtrl.loggedInUsername">Shopping Cart:</h5>
+  <ul class="borderThis" ng-if="userCtrl.loggedInUsername">
+    <li class="borderThis" ng-repeat="cartItem in userCtrl.userShoppingCart">
         {{cartItem.item.name}}, {{cartItem.quantity}}</li>
-
-
     </ul>
       <!-- <button ng-click="userCtrl.pageToDisplay = 3 ; userCtrl.temporaryCartItem = userCtrl.userShoppingCart">View Cart</button> -->
 </div>
