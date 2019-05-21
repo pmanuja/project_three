@@ -25,13 +25,14 @@
       </form>
     </div>
   </div>
+  
 
   <ul class="flexRow flexWrap widthFull">
     <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items"> <h4>{{item.name}}</h4>
       <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
 
       <br />
-      <button ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item; itemCtrl.indexOfEditFormToShow = -1">View Details</button>
+      <button ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item">View Details</button>
       <!-- <div ng-if="itemCtrl.showModal && $index === itemCtrl.itemIndex" id="modal">
 
         <div ng-include="'partials/showproduct.html'"></div>

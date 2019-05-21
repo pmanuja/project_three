@@ -1,7 +1,7 @@
 /* temporary styles for debugging */
-.borderThis{
+/* .borderThis{
   border: 1px solid black;
-}
+} */
 
 
 body{
@@ -47,7 +47,8 @@ nav a{
   color: #34AC98;
   display: block;
   height: 28px;
-  padding: 4px 0 0 44px;
+  /* padding: 4px 0 0 44px; */
+  padding: 0;
   font-style: italic;
   transition: all .2s ease;
   cursor: pointer;
@@ -58,12 +59,22 @@ nav ul{
 }
 
 nav li {
+<<<<<<< HEAD
   display: block;
   margin-bottom: 18px;
   line-height: 1.3em;
   list-style: none;
   font-size: 100%;
   font-weight:bolder;
+=======
+    display: block;
+    margin-bottom: 18px;
+    line-height: 1.3em;
+    list-style: none;
+    font-size: 100%;
+    font-weight:bolder;
+    margin: auto;
+>>>>>>> a7f664f532c2c5fb016aa464221271d3b621dd7f
 }
 
 nav a:hover{
@@ -108,12 +119,13 @@ nav a:hover{
   color: #AAA;
 
 }
-.new-user-form{
+/* .new-user-form{
   margin-top: 110px;
-}
+} */
 
 .text-box{
-  height:20px;
+  height:30px;
+  width: 175px;
   margin: 5px;
   border-radius: .1em;
   text-align: center;
@@ -179,7 +191,7 @@ ul {
 }
 
 .widthFull{
-  width: 100%;
+  width: 80%;
 }
 
 .sticky{
@@ -239,4 +251,23 @@ hr{
   cursor: default;
   font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-weight: 400;
+}
+
+.product-details-btn{
+  width:100px;
+  background-color:gold;
+  color: black;
+  font-size: 10px;
+  font-weight: normal;
+  border-radius: 3px;
+  border: none;
+  border-right-style:inset;
+  margin: 2px;
+  padding: 5px;
+}
+
+.li-images{
+  /* display: block; */
+  width: 40%;
+  height:150px;
 }
