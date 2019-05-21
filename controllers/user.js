@@ -22,7 +22,7 @@ users.post('/', (req, res) => {
     req.body.username = req.body.username.slice(6);
   }
   req.body.isAdmin = adminBool;
-  
+
   Users.create(req.body, (req, createdUser) => {
     res.status(201).json({
       status:201,
@@ -107,12 +107,16 @@ users.get(`/getCartContents/:id`, function(req,res){
           for(let j = 0; j < removedItemIndicies.length; j++) {
             foundUser.shoppingCart.splice(removedItemIndicies[j],1);
           }
+          console.log(" \n here we go \n");
+          console.log(outputCart);
           //order items alphabetically
-          for(let k = 0; k < outputCart.length; k++){
+          for(let k = outputCart.length-1; k >= 0 ; k--){
             if(outputCart[k].item === null) {
               outputCart.splice(k,1);
             }
           }
+          console.log("\n here we go AGAIN \n");
+          console.log(outputCart);
           //console.log(outputCart);
           outputCart.sort(function(a,b){
             return (a.item.name > b.item.name);

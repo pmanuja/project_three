@@ -1,0 +1,21 @@
+<!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
+<div class="adminOnly" ng-if="userCtrl.userIsAdmin">
+  <div class="new-item">
+    <form ng-submit="itemCtrl.createItem()">
+      <input class="" type="text" ng-model="itemCtrl.createNewItem.name" placeholder="name" /><br>
+      <input class="" type="text" ng-model="itemCtrl.createNewItem.price" placeholder="price" /><br>
+      <input list="category" placeholder="Category" ng-model="itemCtrl.createNewItem.category">
+        <datalist id="category">
+          <option value="Electronics">
+          <option value="Books">
+          <option value="Office Supplies">
+          <option value="Etc.">
+        </datalist>
+      <br />
+      <!-- <input class="" type="text" ng-model="itemCtrl.createNewItem.category" placeholder="category" /><br> -->
+      <textarea ng-model="itemCtrl.createNewItem.description" placeholder="description" style="width:300px; height:100px;"></textarea><br>
+      <input class="" type="text" ng-model="itemCtrl.createNewItem.image" placeholder="image url"  ></input><br>
+      <input type="submit" value="Add Item">
+    </form>
+  </div>
+</div>
