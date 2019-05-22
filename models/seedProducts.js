@@ -117,5 +117,5 @@ module.exports = [
     category: "Etc.",
     description: 'You are going to mess up your back in Bootcamp. Get a foam roller and roll all over that thing. Make yourself feel better.',
     image: '../images/roller.png'
-  },
+  }
 ]
