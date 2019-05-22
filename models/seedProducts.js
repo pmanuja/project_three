@@ -118,12 +118,4 @@ module.exports = [
     description: 'You are going to mess up your back in Bootcamp. Get a foam roller and roll all over that thing. Make yourself feel better.',
     image: '../images/roller.png'
   },
-  {
-    name: 'TriggerPoint GRID Foam Roller',
-    price: 26.24,
-    category: "Etc.",
-    description: 'You are going to mess up your back in Bootcamp. Get a foam roller and roll all over that thing. Make yourself feel better.',
-    image: '../images/roller.png'
-  },
-  
 ]
