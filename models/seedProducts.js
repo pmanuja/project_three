@@ -81,7 +81,7 @@ module.exports = [
     price: 17.89,
     category: "Electronics",
     description: 'USB 3.1 Type-C to HDMI adapter for connecting a PC, notebook, or tablet to an HDMI-equipped monitor or display. Up to 4K resolution (3840 x 2160 @ 30 Hz); backwards compatible to 1080P and 720P.',
-    image: '../images/usbc-hdmi.jpg'
+    image: '../images/usbc-hdmi.png'
   },
   {
     name: 'High-Speed 4K HDMI Cable, 6 Feet',
@@ -89,13 +89,6 @@ module.exports = [
     category: "Electronics",
     description: 'HDMI A Male to A Male Cable: Supports Ethernet, 3D, 4K video and Audio Return Channel (ARC)',
     image: '../images/hdmi.jpg'
-  },
-  {
-    name: 'Easy Hang Blue Light Blocking Screen Protector Panel for Desktop Computer LED PC Monitor and iMac 4K Retina-Work for 20, 20.1, 21.5 and 22 inch Diagonal',
-    price: 55.95,
-    category: "Electronics",
-    description: 'HDMI A Male to A Male Cable: Supports Ethernet, 3D, 4K video and Audio Return Channel (ARC)',
-    image: '../images/bluelight.jpg'
   },
   {
     name: 'Easy Hang Blue Light Blocking Screen Protector Panel for Desktop Computer LED PC Monitor and iMac 4K Retina-Work for 20, 20.1, 21.5 and 22 inch Diagonal',
