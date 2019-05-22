@@ -1,9 +1,3 @@
-/* temporary styles for debugging */
-/* .borderThis{
-  border: 1px solid black;
-} */
-
-
 body{
   /* width: 900px; */
   height: 100%;
@@ -28,12 +22,11 @@ body h1{
   background-color:white;
   color: black;
   text-align:justify;
-
 }
+
 .welcome-div p{
   font-size: .875em;
   line-height: 1.45em;
-
 }
 
 nav{
@@ -42,6 +35,7 @@ nav{
   left: 0;
   width: 160px;
 }
+
 nav a{
   text-decoration: none;
   color: #34AC98;
@@ -54,6 +48,7 @@ nav a{
   cursor: pointer;
   font-size: 20px;
 }
+
 nav ul{
   list-style: none;
 }
@@ -77,6 +72,7 @@ nav a:hover{
   width:100%;
   height: 760px;
 }
+
 .enter-boutique{
   top: 585px;
   padding: 10px 24px 15px;
@@ -89,6 +85,7 @@ nav a:hover{
   font-style: italic;
   cursor: pointer;
 }
+
 .boutique-header{
   top: 620px;
   padding: 10px 24px 15px;
@@ -99,8 +96,8 @@ nav a:hover{
   right:auto;
   left: auto;
   font-style: italic;
-
 }
+
 .footer{
   clear:both;
   position: relative;
@@ -108,11 +105,7 @@ nav a:hover{
   padding-top: 20px;
   border-top: 2px solid #E5E5E5;
   color: #AAA;
-
 }
-/* .new-user-form{
-  margin-top: 110px;
-} */
 
 .text-box{
   height:30px;
@@ -129,7 +122,6 @@ input[type="submit"]{
   border-radius: 5px;
   border:1px solid black;
   text-align: center;
-
 }
 
 body {
@@ -191,7 +183,6 @@ ul {
   top: 0;
 }
 
-
 .modal-textbox {
   background-color: khaki;
   height: 350px;
@@ -200,14 +191,16 @@ ul {
   margin: auto;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
+
 #close{
   margin-right: 0px;
 }
+
 .showCart{
   display: flex;
   justify-content:space-around;
-
 }
+
 .cart-header{
   font-size: 1.5rem;
   margin-top: 24px;
@@ -217,6 +210,7 @@ ul {
   margin: 16px 0 0;
   font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
+
 hr{
   width:90%;
 }
@@ -233,8 +227,8 @@ hr{
   font-family: BogleWeb,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-size: .8rem;
   cursor: default;
-
 }
+
 .qty-price > h4{
   display: flex;
   flex-direction: column;
@@ -268,13 +262,12 @@ hr{
   text-align: left;
   margin-left: 150px;
 }
+
 .product-detail-image{
   display: inline;
   margin-left:0;
   width:600px;
   height: 450px;
-
-
 }
 
 .product-details-container {
@@ -284,7 +277,6 @@ hr{
 .product-details-row{
   width:60%;
   padding-left: 200px;
-
 }
 
 .product-desc > p{

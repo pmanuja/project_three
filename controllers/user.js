@@ -15,11 +15,11 @@ users.get('/', (req, res) => {
 users.post('/', (req, res) => {
   req.body.shoppingCart = [];
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-
+  let adminCheck = process.env.ADMINPASS;
   let adminBool = false;
-  if(req.body.username.slice(0,6) === "ADMIN_"){
+  if(req.body.username.slice(0, adminCheck.length) === adminCheck){
     adminBool = true;
-    req.body.username = req.body.username.slice(6);
+    req.body.username = req.body.username.slice(adminCheck.length);
   }
   req.body.isAdmin = adminBool;
 
@@ -77,8 +77,6 @@ users.put(`/addToCart/:id`, function(req,res) {
   });
 });
 
-
-
 //GET - the full list of items from the user's cart.
 //If items have been deleted from the database, it will remove them from the shopping cart automatically
 users.get(`/getCartContents/:id`, function(req,res){
@@ -127,11 +125,8 @@ users.get(`/getCartContents/:id`, function(req,res){
         }
       });
     }; //End loop
-
   });
 });
-
-
 
 //DELETE - a single user
 users.delete('/:id', (req, res) => {
@@ -146,8 +141,5 @@ users.put('/:id', (req, res) => {
     res.json(updatedUser);
   });
 });
-
-
-
 
 module.exports = users;
