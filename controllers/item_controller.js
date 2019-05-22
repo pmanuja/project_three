@@ -48,7 +48,11 @@ router.put(`/addReview/:id`, function(req,res){
     } else {
       console.log(req.body);
       console.log(req.body.reviews);
-      editedItem.reviews.push(req.body.reviews);
+      if(editedItem.reviews !== null) {
+        editedItem.reviews.push(req.body.reviews);
+      } else {
+        console.log(`null reviews handling`);
+      }
       editedItem.save(function(response){
         res.json(editedItem);
       });

@@ -16,7 +16,7 @@
 <ul class="flexRow flexWrap widthFull">
   <li class="singleItem borderThis" ng-repeat="item in itemCtrl.items | orderBy: order | filter: searchBox">
     <h4>{{item.name}}</h4>
-    <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-width: 30%; "/>
+    <img ng-src= {{item.image}} alt="{{item.name}} image" style="max-height: 10em;"/>
     <br />
     <button class="product-details-btn" ng-click="userCtrl.pageToDisplay = 2 ; itemCtrl.temporaryItem = item">View Details</button>
       <!-- Once 'admin' users are enabled, have this div be visible only if an admin is logged in. -->
