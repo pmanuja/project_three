@@ -40,24 +40,15 @@ db.on('disconnected', () => console.log('mongo disconnected'));
 db.on('open' , ()=>{console.log('i am a mongoose');
 });
 
-// // connect to mongoose
-// mongoose.connect(, { useNewUrlParser: true });
-// mongoose.connection.once('open', () => {
-//   console.log('i am a mongoose');
-// });
-
 // port listening...
 app.listen(process.env.PORT, () => {
   console.log('listening...');
 });
 
-
 //Controller routes
 app.use('/users', userController);
 app.use(`/items`, itemController);
 app.use(`/sessions`, sessionController);
-
-//All other routes
 
 //A route to access additional user functionality on the app once signed in. Returns the session's current user.
 app.get('/app', (req, res)=>{
@@ -70,3 +61,15 @@ app.get('/app', (req, res)=>{
     });
   }
 });
+
+//All other routes
+app.get('*', (req, res) => {
+  res.status(404).json('Sorry, page not found.')
+});
+
+// CODE GRAVEYARD
+// // connect to mongoose
+// mongoose.connect(, { useNewUrlParser: true });
+// mongoose.connection.once('open', () => {
+//   console.log('i am a mongoose');
+// });

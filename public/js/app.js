@@ -15,7 +15,6 @@ app.controller('ShopController', ['$http', function($http){
     controller.itemIndex = $index;
   };
 
-
   this.deleteItem = function(item_id) {
       console.log('delete me ' + item_id);
       $http({
@@ -39,8 +38,8 @@ app.controller('ShopController', ['$http', function($http){
       controller.loggedInUsername = response.data.username;
     }, function(){
       console.log('error');
-    })
-  }
+    });
+  };
 
   this.addReview = function(item_id) {
     console.log(`line 46`);
@@ -73,7 +72,7 @@ app.controller('ShopController', ['$http', function($http){
     }, function(error) {
       console.log(error);
     });
-  }
+  };
 
 
 
@@ -90,8 +89,7 @@ app.controller('ShopController', ['$http', function($http){
     }, function(error) {
       console.log(error);
     });
-  }
-
+  };
 
   this.getItems = function(){
     $http({
@@ -103,15 +101,11 @@ app.controller('ShopController', ['$http', function($http){
     }, function(error) {
       console.log(error);
     });
-  }
+  };
 
   controller.getItems();
 
-}])
-
-
-
-
+}]);
 
 app.controller('UserController', ['$http', function($http){
   const controller = this;
@@ -131,7 +125,7 @@ app.controller('UserController', ['$http', function($http){
     }
 
     return total;
-  }
+  };
 
   this.openShop = function(){
     $http({
@@ -154,7 +148,6 @@ app.controller('UserController', ['$http', function($http){
   };
 
   this.createUser = function(){
-
     $http({
       method:'POST',
       url: '/users',
