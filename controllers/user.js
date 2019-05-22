@@ -15,11 +15,11 @@ users.get('/', (req, res) => {
 users.post('/', (req, res) => {
   req.body.shoppingCart = [];
   req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-
+  let adminCheck = process.env.ADMINPASS;
   let adminBool = false;
-  if(req.body.username.slice(0,6) === "ADMIN_"){
+  if(req.body.username.slice(0, adminCheck.length) === adminCheck){
     adminBool = true;
-    req.body.username = req.body.username.slice(6);
+    req.body.username = req.body.username.slice(adminCheck.length);
   }
   req.body.isAdmin = adminBool;
 
