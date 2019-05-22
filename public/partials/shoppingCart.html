@@ -4,11 +4,11 @@
 
     <div class="showCart">
     <div class="cart-item-image">
-      <img src="{{cartItem.item.image}}" alt="">
+      <img style="" src="{{cartItem.item.image}}" alt="">
 
     </div>
-    <div class="cart-item-desc">
-        <p>{{cartItem.item.description}}</p>
+    <div class="cart-item-desc" style="max-width: 30%; word-wrap: break-word;">
+        <p style="width: 90%;">{{cartItem.item.description}}</p>
     </div>
     <div class="qty-price">
       <div class="cart-item-qty">
@@ -25,8 +25,8 @@
     </div>
 
   </div>
-  <a href="#">Remove | </a>
-  <a href="#">Save for later</a>
+  <!-- <a href="#">Remove | </a> -->
+  <!-- <a href="#">Save for later</a> -->
   <hr/>
 </div>
 <h2> Subtotal: ${{userCtrl.getSubTotal()}}</h2>

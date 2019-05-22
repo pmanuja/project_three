@@ -1,6 +1,7 @@
 # project_three - Bootcamp Boutique
 Jon Phillips, Pooja Manuja, Ryan Whitehill
 
+Project Link: https://bootcamp-boutique.herokuapp.com/
 
 ## Technologies used:
 - Javascript, Angular (1.7.2), HTML, CSS, Node.JS, Via-NPM:(Bcrypt, Dotenv, Express, Express-session, Mongoose), Github, Heroku

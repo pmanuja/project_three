@@ -42,14 +42,13 @@ app.controller('ShopController', ['$http', function($http){
   };
 
   this.addReview = function(item_id) {
-    console.log(`line 46`);
     console.log(this.reviewInfo);
     $http({
       method:'PUT',
       url: '/items/addReview/' + item_id,
       data: this.reviewInfo
     }).then(function(response){
-      console.log(response);
+      //console.log(response);
       controller.getItems();
       controller.displayReviewForm = 0;
       controller.reviewInfo = {};
