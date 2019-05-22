@@ -50,11 +50,6 @@ app.use('/users', userController);
 app.use(`/items`, itemController);
 app.use(`/sessions`, sessionController);
 
-//All other routes
-app.get('*', (req, res) => {
-  res.status(404).json('Sorry, page not found.')
-});
-
 //A route to access additional user functionality on the app once signed in. Returns the session's current user.
 app.get('/app', (req, res)=>{
   if(req.session.currentUser){
@@ -65,6 +60,11 @@ app.get('/app', (req, res)=>{
       message:'not logged in'
     });
   }
+});
+
+//All other routes
+app.get('*', (req, res) => {
+  res.status(404).json('Sorry, page not found.')
 });
 
 // CODE GRAVEYARD
